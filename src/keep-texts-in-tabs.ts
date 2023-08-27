@@ -1,9 +1,8 @@
 import {
     Lovelace,
-    KeepTabsTextsConfig,
+    KeepTextsInTabsConfig,
     TabContainer,
     Tab,
-    TabOverride,
     Position
 } from '@types';
 import {
@@ -19,10 +18,10 @@ import {
     getPromisableElement,
     getSpan,
     addStyle,
-    removeStyle,
+    logVersionToConsole
 } from '@utilities';
 
-class KeepTabsTexts {
+class KeepTextsInTabs {
 
     constructor() {
         this.resizeWindowBinded = this.resizeWindow.bind(this);  
@@ -70,6 +69,10 @@ class KeepTabsTexts {
             `${ELEMENT.HOME_ASSISTANT_MAIN} > ${ELEMENT.HA_PANEL_LOVELACE}`
         );
 
+        if (this.panelResolverObserver) {
+            this.panelResolverObserver.disconnect();
+        }
+
         this.panelResolverObserver = new MutationObserver(this.dashboardChanged.bind(this));
 
         this.panelResolverObserver.observe(this.partialPanelResolver, {
@@ -112,11 +115,6 @@ class KeepTabsTexts {
             'Lovelace config'
         );
 
-        if (!config.keep_tab_texts) {
-            removeStyle(this.appToolbar);
-            return;
-        }
-
         addStyle(this.appToolbar);
 
         this.lovelaceResolver = new MutationObserver(this.lovelaceChanged.bind(this));
@@ -124,22 +122,24 @@ class KeepTabsTexts {
             childList: true,
         });
 
-        this.toolBarObserver = new MutationObserver(this.process.bind(this, config.keep_tab_texts));
+        this.toolBarObserver = new MutationObserver(this.process.bind(this, config.keep_texts_in_tabs));
         this.toolBarObserver.observe(this.appToolbar, {
             childList: true,
         });
 
-        this.process(config.keep_tab_texts);
+        this.process(config.keep_texts_in_tabs);
 
     }
 
-    protected process(config: KeepTabsTextsConfig) {
+    protected process(config: KeepTextsInTabsConfig | undefined) {
 
         if (this.paperTabsEditionResolver) {
             this.paperTabsEditionResolver.disconnect();
         }
 
-        let conf: KeepTabsTextsConfig;
+        if (!config) return;
+
+        let conf: KeepTextsInTabsConfig;
 
         if (
             config.mobile_config &&
@@ -159,7 +159,7 @@ class KeepTabsTexts {
         } = conf;
 
         if (include && exclude) {
-            throw Error(`${NAMESPACE}: Configuration cannot have include and exclude properties at the same time`);
+            throw Error(`${NAMESPACE}: Configuration cannot have "include" and "exclude" properties at the same time`);
         }
 
         const editMode = !!this.huiRoot.querySelector(`:host > div.edit-mode`);
@@ -174,15 +174,7 @@ class KeepTabsTexts {
 
         if (!paperTabs.length) return;
 
-        const overrideConfig = override.reduce((positions: Record<string, Position>, tabOverride: TabOverride): Record<string, Position> => {
-            if (
-                tabOverride.position === Position.AFTER ||
-                tabOverride.position === Position.BEFORE
-            ) {
-                positions[tabOverride.tab.toUpperCase()] = tabOverride.position;
-            }
-            return positions;
-        }, {} as Record<string, Position>);
+        const overrideCapital = override.map((label: string): string => label.toUpperCase());
         
         const paperTabsArray = paperTabs
             .map((paperTab: HTMLElement): Tab => {
@@ -195,11 +187,20 @@ class KeepTabsTexts {
                     element: paperTab,
                     label,
                     icon: paperTab.querySelector(ELEMENT.HA_ICON),
-                    position: overrideConfig[label.toUpperCase()] || position
+                    position: overrideCapital.includes(label.toUpperCase())
+                        ? (
+                            position === Position.AFTER
+                                ? Position.BEFORE
+                                : Position.AFTER
+                        )
+                        : position
                 };
             })
             .filter((tab: Tab) => {
-                if (!enabled || !tab.icon) return false;
+                if (
+                    !enabled ||
+                    !tab.icon
+                ) return false;
                 if (include) {
                     return include.includes(tab.label)
                 }
@@ -272,7 +273,9 @@ class KeepTabsTexts {
 
 }
 
+logVersionToConsole();
+
 Promise.resolve(customElements.whenDefined(ELEMENT.HUI_VIEW))
     .then(() => {
-        new KeepTabsTexts();
+        new KeepTextsInTabs();
     });

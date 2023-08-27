@@ -4,6 +4,7 @@ import {
     MAX_ATTEMPTS,
     RETRY_DELAY
 } from '@constants';
+import { version } from '../../package.json';
 
 export const getPromisableElement = <T>(
     getElement: () => T,
@@ -69,4 +70,12 @@ export const removeStyle = (element: HTMLElement): void => {
     if (styleExists(element)) {
         element.querySelector(`#${NAMESPACE}`).remove();
     }
+};
+
+export const logVersionToConsole = () => {
+    console.info(
+        `%c＋ ${NAMESPACE.toUpperCase()}%cv${version}`,
+        'font-weight: bold; color: #038fc7; padding: 2px;',
+        'font-weight: normal; color: #212121; padding: 2px'
+    );
 };

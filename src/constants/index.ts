@@ -1,4 +1,4 @@
-export const NAMESPACE = 'keep-tabs-texts';
+export const NAMESPACE = 'keep-texts-in-tabs';
 export const MAX_ATTEMPTS = 500;
 export const RETRY_DELAY = 50;
 export const SHADOW_ROOT_SUFFIX = ':shadowRoot';

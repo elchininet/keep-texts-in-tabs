@@ -3,20 +3,15 @@ export enum Position {
     BEFORE = 'before'
 }
 
-export interface TabOverride {
-    tab: string;
-    position: Position;
-}
-
 export interface Config {
     enabled: boolean;
     position?: Position;
     include?: string[];
     exclude?: string[];
-    override?: TabOverride[];
+    override?: string[];
 }
 
-export interface KeepTabsTextsConfig extends Config {
+export interface KeepTextsInTabsConfig extends Config {
     mobile_config?: Config & {
         mobile_screen_width?: number;
     };  
@@ -25,7 +20,7 @@ export interface KeepTabsTextsConfig extends Config {
 export interface Lovelace extends HTMLElement {
     lovelace: {
         config: {
-            keep_tab_texts: KeepTabsTextsConfig;
+            keep_texts_in_tabs: KeepTextsInTabsConfig;
         };
     }
 }
