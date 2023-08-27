@@ -1,0 +1,20 @@
+{
+  "name": "keep-texts-in-tabs",
+  "version": "1.0.0",
+  "description": "Avoid removing texts from Home Assistant tabs when icons are added to them",
+  "main": "keep-texts-in-tabs.js",
+  "repository": "git@github.com:elchininet/keep-texts-in-tabs.git",
+  "author": "ElChiniNet",
+  "license": "Apache-2.0",
+  "private": false,
+  "scripts": {
+    "build": "rollup --config rollup.config.js --bundleConfigAsCjs"
+  },
+  "devDependencies": {
+    "@rollup/plugin-json": "^6.0.0",
+    "rollup": "^3.28.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-ts": "^3.4.4",
+    "typescript": "^5.2.2"
+  }
+}

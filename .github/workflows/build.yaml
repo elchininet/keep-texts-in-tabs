@@ -1,0 +1,70 @@
+name: Create release
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: node:16
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set-up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'yarn'
+          registry-url: 'https://registry.npmjs.org'
+      - name: Install deps
+        run: yarn install --frozen-lockfile
+      - name: Build Changelog
+        id: build_changelog
+        uses: mikepenz/release-changelog-builder-action@v3
+        with:
+          configurationJson: |
+            {
+              "categories": [
+                {
+                  "title": "## 🚀 Features",
+                  "labels": ["feature", "feature-request", "enhancement", "request"]
+                },
+                {
+                  "title": "## 🛠 Fixes",
+                  "labels": ["fix", "bug"]
+                },
+                {
+                  "title": "## 🧩 Dependencies",
+                  "labels": ["dependencies"]
+                },
+                {
+                  "title": "## ⚙️ Configuration",
+                  "labels": ["configuration"]
+                },
+                {
+                  "title": "## 📝 Documentation",
+                  "labels": ["documentation"]
+                },
+                {
+                  "title": "## 📦 Other",
+                  "labels": []
+                }
+              ],
+              "template": "#{{CHANGELOG}}",
+              "pr_template": "- #{{TITLE}}\n   - PR: ##{{NUMBER}} by @#{{AUTHOR}}",
+              "empty_template": "#{{OWNER}}\n#{{REPO}}\n#{{FROM_TAG}}\n#{{TO_TAG}}",
+              "max_pull_requests": 1000,
+              "max_back_track_time_days": 1000
+            }
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create a release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            dist/keep-texts-in-tabs.js
+          body: |
+            ${{ steps.build_changelog.outputs.changelog }}
