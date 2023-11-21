@@ -1,34 +1,6 @@
 import { Position } from '@types';
-import {
-    NAMESPACE,
-    MAX_ATTEMPTS,
-    RETRY_DELAY
-} from '@constants';
+import { NAMESPACE } from '@constants';
 import { version } from '../../package.json';
-
-export const getPromisableElement = <T>(
-    getElement: () => T,
-    check: (element: T) => boolean,
-    elementName: string
-): Promise<T> => {
-    return new Promise<T>((resolve, reject) => {
-        let attempts = 0;
-        const select = () => {
-            const element: T = getElement();
-            if (element && check(element)) {
-                resolve(element);
-            } else {
-                attempts++;
-                if (attempts < MAX_ATTEMPTS) {
-                    setTimeout(select, RETRY_DELAY);
-                } else {
-                    reject(new Error(`${NAMESPACE}: Cannot select ${elementName} after ${MAX_ATTEMPTS} attempts. Giving up!`));
-                }
-            }
-        };
-        select();
-    });
-};
 
 export const getSpan = (text: string, position: Position): HTMLSpanElement => {
     const textNode = document.createTextNode(text);
@@ -52,11 +24,11 @@ const buildStyles = (): string => {
     `;
 };
 
-const styleExists = (elem: HTMLElement): HTMLStyleElement => {
+const styleExists = (elem: Element): HTMLStyleElement => {
     return elem.querySelector<HTMLStyleElement>(`#${NAMESPACE}`);
 };
 
-export const addStyle = (elem: HTMLElement): void => {
+export const addStyle = (elem: Element): void => {
     let style = styleExists(elem);
     if (!style) {
         style = document.createElement('style');
@@ -66,7 +38,7 @@ export const addStyle = (elem: HTMLElement): void => {
     style.innerHTML = buildStyles();
 };
 
-export const removeStyle = (element: HTMLElement): void => {
+export const removeStyle = (element: Element): void => {
     if (styleExists(element)) {
         element.querySelector(`#${NAMESPACE}`).remove();
     }
