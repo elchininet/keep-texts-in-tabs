@@ -1,3 +1,4 @@
+import { HAQuerySelector } from 'home-assistant-query-selector';
 import {
     Lovelace,
     KeepTextsInTabsConfig,
@@ -8,14 +9,12 @@ import {
 import {
     NAMESPACE,
     ELEMENT,
-    SHADOW_ROOT_SUFFIX,
     ARIA_LABEL_ATTRIBUTE,
     DEFAULT_MOBILE_WIDTH,
     NODE_TYPE,
     WINDOW_RESIZE_DELAY
 } from '@constants';
 import {
-    getPromisableElement,
     getSpan,
     addStyle,
     logVersionToConsole
@@ -24,103 +23,41 @@ import {
 class KeepTextsInTabs {
 
     constructor() {
-        this.resizeWindowBinded = this.resizeWindow.bind(this);  
-        this.start();
+        const selector = new HAQuerySelector();
+        selector.addEventListener('onLovelacePanelLoad', async (event) => {
+            const {
+                HA_PANEL_LOVELACE,
+                HUI_ROOT,
+                HEADER
+            } = event.detail;
+            
+            this.lovelace = await HA_PANEL_LOVELACE.element as Lovelace;
+            this.huiRoot = await HUI_ROOT.shadowRootQuerySelector('$');
+            this.appToolbar = await HEADER.querySelector(ELEMENT.TOOLBAR);
+            this.run();
+        });
+        selector.listen();
+        this.resizeWindowBinded = this.resizeWindow.bind(this);
+        window.addEventListener('resize', this.resizeWindowBinded);         
     }
 
-    private ha: HTMLElement;
-    private main: ShadowRoot;
-    private partialPanelResolver: HTMLElement;
     private lovelace: Lovelace;
     private huiRoot: ShadowRoot;
-    private appToolbar: HTMLElement;
+    private appToolbar: Element;
 
-    private panelResolverObserver: MutationObserver;
-    private lovelaceResolver: MutationObserver;
     private toolBarObserver: MutationObserver;
     private paperTabsEditionResolver: MutationObserver;
 
     private resizeDelay: number;
     private resizeWindowBinded: () => void;
 
-    protected async start() {
-
-        this.ha = await getPromisableElement(
-            (): HTMLElement => document.querySelector<HTMLElement>(ELEMENT.HOME_ASSISTANT),
-            (ha: HTMLElement) => !!(ha && ha.shadowRoot),
-            ELEMENT.HOME_ASSISTANT
-        );
-
-        this.main = await getPromisableElement(
-            (): ShadowRoot => this.ha.shadowRoot.querySelector(ELEMENT.HOME_ASSISTANT_MAIN)?.shadowRoot,
-            (main: ShadowRoot) => !!main,
-            `${ELEMENT.HOME_ASSISTANT_MAIN}${SHADOW_ROOT_SUFFIX}`
-        );
-
-        this.partialPanelResolver = await getPromisableElement(
-            (): HTMLElement => this.main.querySelector<HTMLElement>(ELEMENT.PARTIAL_PANEL_RESOLVER),
-            (partialPanelResolver: HTMLElement) => !!partialPanelResolver,
-            `${ELEMENT.HOME_ASSISTANT_MAIN} > ${ELEMENT.PARTIAL_PANEL_RESOLVER}`
-        );
-
-        this.lovelace = await getPromisableElement(
-            (): Lovelace => this.main.querySelector<Lovelace>(ELEMENT.HA_PANEL_LOVELACE),
-            (lovelace: Lovelace) => !!lovelace,
-            `${ELEMENT.HOME_ASSISTANT_MAIN} > ${ELEMENT.HA_PANEL_LOVELACE}`
-        );
-
-        if (this.panelResolverObserver) {
-            this.panelResolverObserver.disconnect();
-        }
-
-        this.panelResolverObserver = new MutationObserver(this.dashboardChanged.bind(this));
-
-        this.panelResolverObserver.observe(this.partialPanelResolver, {
-            childList: true,
-        });
- 
-        window.removeEventListener('resize', this.resizeWindowBinded);
-        window.addEventListener('resize', this.resizeWindowBinded);
-
-        this.run();
-
-    }
-
     protected async run() {
-
-        if (this.lovelaceResolver) {
-            this.lovelaceResolver.disconnect();
-        }
-
-        if (this.toolBarObserver) {
-            this.toolBarObserver.disconnect();
-        }
-
-        this.huiRoot = await getPromisableElement(
-            (): ShadowRoot => this.lovelace?.shadowRoot?.querySelector(ELEMENT.HUI_ROOT)?.shadowRoot,
-            (huiRoot: ShadowRoot) => !!huiRoot,
-            `${ELEMENT.HOME_ASSISTANT_MAIN} > ${ELEMENT.HA_PANEL_LOVELACE} > ${ELEMENT.HUI_ROOT}${SHADOW_ROOT_SUFFIX}`
-        );
-
-        this.appToolbar = await getPromisableElement(
-            (): HTMLElement => this.huiRoot.querySelector<HTMLElement>(ELEMENT.TOOLBAR),
-            (appToolbar: HTMLElement) => !!appToolbar,
-            `${ELEMENT.HOME_ASSISTANT_MAIN} > ${ELEMENT.HA_PANEL_LOVELACE} > ${ELEMENT.HUI_ROOT}${SHADOW_ROOT_SUFFIX} > ${ELEMENT.TOOLBAR}`
-        );
-
-        // Get the configuration and process it
-        const config = await getPromisableElement(
-            () => this.lovelace?.lovelace?.config,
-            (config: Lovelace['lovelace']['config']) => !!config,
-            'Lovelace config'
-        );
+        this.toolBarObserver?.disconnect();
 
         addStyle(this.appToolbar);
 
-        this.lovelaceResolver = new MutationObserver(this.lovelaceChanged.bind(this));
-        this.lovelaceResolver.observe(this.lovelace.shadowRoot, {
-            childList: true,
-        });
+        // Get the configuration and process it
+        const config = this.lovelace.lovelace.config;        
 
         this.toolBarObserver = new MutationObserver(this.process.bind(this, config.keep_texts_in_tabs));
         this.toolBarObserver.observe(this.appToolbar, {
@@ -133,9 +70,7 @@ class KeepTextsInTabs {
 
     protected process(config: KeepTextsInTabsConfig | undefined) {
 
-        if (this.paperTabsEditionResolver) {
-            this.paperTabsEditionResolver.disconnect();
-        }
+        this.paperTabsEditionResolver?.disconnect();
 
         if (!config) return;
 
@@ -243,31 +178,10 @@ class KeepTextsInTabs {
         }
     }
 
-    protected dashboardChanged(mutations: MutationRecord[]) {
-        mutations.forEach(({ addedNodes }): void => {
-            addedNodes.forEach((node: Element): void => {
-                if (node.localName === ELEMENT.HA_PANEL_LOVELACE) {
-                    this.lovelace = node as Lovelace;
-                    this.run();
-                }
-            });
-        });
-    }
-
-    protected lovelaceChanged(mutations: MutationRecord[]) {
-        mutations.forEach(({ addedNodes }): void => {
-            addedNodes.forEach((node: Element): void => {
-                if (node.localName === ELEMENT.HUI_ROOT) {
-                    this.run();
-                }
-            });
-        });
-    }
-
     protected resizeWindow() {
         window.clearTimeout(this.resizeDelay);
         this.resizeDelay = window.setTimeout(() => {
-          this.start();
+          this.run();
         }, WINDOW_RESIZE_DELAY);
       }
 
