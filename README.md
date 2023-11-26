@@ -1,5 +1,5 @@
 # Keep Texts in Tabs
-[![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg?style=for-the-badge)](https://github.com/hacs/integration)
+[![hacs_badge](https://img.shields.io/badge/HACS-Default-41BDF5.svg?style=for-the-badge)](https://github.com/hacs/integration)
 
 #### Avoid removing texts from Home Assistant tabs when icons are added to them
 
@@ -23,12 +23,10 @@ You need to install the plugin manually or through [HACS], not both. If you inst
 
 ### Through HACS
 
-The plugin is still not available in HACS default (it will be when [this](https://github.com/hacs/default/pull/2038) gets merged). For now, it should be installed through [HACS custom](https://hacs.xyz/docs/faq/custom_repositories/) adding https://github.com/elchininet/keep-texts-in-tabs to the custom repositories.
-
-[//]: # "1. Go to `HACS` dashboard"
-[//]: # "2. Go to `Frontend`"
-[//]: # "3. Click on `Explore and download repositories` button in the bottom-right of the screen"
-[//]: # "4. Search for `keep-texts-in-tabs` and install it"
+1. Go to `HACS` dashboard
+2. Go to `Frontend`
+3. Click on `Explore and download repositories` button in the bottom-right of the screen
+4. Search for `keep-texts-in-tabs` and install it
 
 ### Manual installation
 
