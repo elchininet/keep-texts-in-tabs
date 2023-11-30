@@ -44,13 +44,13 @@ You need to install the plugin manually or through [HACS], not both. If you inst
 
 #### If you are in yaml mode
 
-1. Go to your desired dashboard yaml file
-2. Add the URL to the file that you have downloaded previously below the `resources` section
+1. Go to your `configuration.yaml`
+2. Add the URL to the file that you have previously downloaded under the `extra_module_url` array of the `frontend` section
 
 ```yaml
-resources:
-  - url: /local/keep-texts-in-tabs.js?v=1.0.0
-    type: module
+frontend:
+  extra_module_url:
+    - /local/keep-texts-in-tabs.js?v=1.0.0
 ```
 
 4. Make sure you add the correct version at the end of the URL (e.g. `?v=1.0.0`) because in this way you make Home Assistant to load the new version instead of a version stored in cache
