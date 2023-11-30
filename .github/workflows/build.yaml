@@ -21,6 +21,11 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - name: Install deps
         run: yarn install --frozen-lockfile
+      - name: E2E tests
+        run: |
+          touch .env
+          echo HA_TOKEN=${{ secrets.HA_TOKEN }} >> .env
+          yarn test:all
       - name: Build Changelog
         id: build_changelog
         uses: mikepenz/release-changelog-builder-action@v3

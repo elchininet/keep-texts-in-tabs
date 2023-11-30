@@ -2,3 +2,8 @@
 /dist
 .DS_Store
 .hass/config/www/keep-texts-in-tabs.js
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+.env
