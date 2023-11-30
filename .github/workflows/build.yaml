@@ -7,18 +7,22 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    container:
-      image: node:16
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Set-up Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '16'
+          node-version: '18'
           cache: 'yarn'
           registry-url: 'https://registry.npmjs.org'
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cache
+          key: dependencies-v1-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       - name: Install deps
         run: yarn install --frozen-lockfile
       - name: E2E tests
