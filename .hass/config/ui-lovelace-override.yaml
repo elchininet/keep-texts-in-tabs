@@ -1,9 +1,10 @@
 keep_texts_in_tabs:
   enabled: true
-  mobile_config:
-    enabled: true
-    position: before
-title: Keep Text in Tabs
+  position: before
+  override:
+    - Muziek
+    - Planten
+title: Override
 views:
   - theme: Backend-selected
     title: Home

@@ -1,9 +1,9 @@
 keep_texts_in_tabs:
   enabled: true
-  mobile_config:
-    enabled: true
-    position: before
-title: Keep Text in Tabs
+  exclude:
+    - Windy
+    - Planten
+title: Exclude
 views:
   - theme: Backend-selected
     title: Home

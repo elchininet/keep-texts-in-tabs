@@ -1,9 +1,7 @@
 keep_texts_in_tabs:
   enabled: true
-  mobile_config:
-    enabled: true
-    position: before
-title: Keep Text in Tabs
+  position: before
+title: Position
 views:
   - theme: Backend-selected
     title: Home

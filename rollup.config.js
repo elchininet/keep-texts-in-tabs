@@ -21,6 +21,10 @@ export default {
         {
             file: 'dist/keep-texts-in-tabs.js',
             format: 'iife'
+        },
+        {
+            file: '.hass/config/www/keep-texts-in-tabs.js',
+            format: 'iife'
         }
     ]
 };

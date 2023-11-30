@@ -18,6 +18,23 @@ scene: !include scenes.yaml
 
 lovelace:
   mode: yaml
+  dashboards:
+    lovelace-position:
+      mode: yaml
+      title: Position
+      filename: ui-lovelace-position.yaml
+    lovelace-include:
+      mode: yaml
+      title: Include
+      filename: ui-lovelace-include.yaml
+    lovelace-exclude:
+      mode: yaml
+      title: Exclude
+      filename: ui-lovelace-exclude.yaml
+    lovelace-override:
+      mode: yaml
+      title: Override
+      filename: ui-lovelace-override.yaml
 
 # Load frontend themes from the themes folder
 frontend:
