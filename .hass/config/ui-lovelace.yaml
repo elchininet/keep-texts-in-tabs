@@ -1,0 +1,7 @@
+title: Keep Text in Tabs
+views:
+  - theme: Backend-selected
+    title: Home
+    path: home
+    badges: []
+    cards: []
