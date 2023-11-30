@@ -1,0 +1,35 @@
+keep_texts_in_tabs:
+  enabled: true
+  position: before
+title: Position
+views:
+  - theme: Backend-selected
+    title: Home
+    icon: mdi:home
+    path: home
+    badges: []
+    cards: []
+  - theme: Backend-selected
+    title: Muziek
+    icon: mdi:music
+    path: muziek
+    badges: []
+    cards: []
+  - theme: Backend-selected
+    title: Windy
+    icon: mdi:weather-windy
+    path: windy
+    badges: []
+    cards: []
+  - theme: Backend-selected
+    title: Alarmen
+    icon: mdi:alarm
+    path: alarmen
+    badges: []
+    cards: []
+  - theme: Backend-selected
+    title: Planten
+    icon: mdi:flower
+    path: planten
+    badges: []
+    cards: []
