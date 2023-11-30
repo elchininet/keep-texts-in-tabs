@@ -113,7 +113,7 @@ class KeepTextsInTabs {
         
         const paperTabsArray = paperTabs
             .map((paperTab: HTMLElement): Tab => {
-                const label = paperTab.getAttribute(ARIA_LABEL_ATTRIBUTE);
+                const label = paperTab.getAttribute(ARIA_LABEL_ATTRIBUTE) || '';
                 const span = paperTab.querySelector(`span.${NAMESPACE}`);
                 if (span) {
                     span.remove();
