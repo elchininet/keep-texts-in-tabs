@@ -32,8 +32,8 @@ class KeepTextsInTabs {
             } = event.detail;
             
             this.lovelace = await HA_PANEL_LOVELACE.element as Lovelace;
-            this.huiRoot = await HUI_ROOT.shadowRootQuerySelector('$');
-            this.appToolbar = await HEADER.querySelector(ELEMENT.TOOLBAR);
+            this.huiRoot = await HUI_ROOT.selector.$.element;
+            this.appToolbar = await HEADER.selector.query(ELEMENT.TOOLBAR).element;
             this.run();
         });
         selector.listen();
