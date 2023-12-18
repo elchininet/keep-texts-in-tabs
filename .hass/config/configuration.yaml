@@ -43,6 +43,10 @@ lovelace:
       mode: yaml
       title: No Config
       filename: ui-lovelace-no-config.yaml
+    lovelace-not-enabled:
+      mode: yaml
+      title: Not Enabled
+      filename: ui-lovelace-not-enabled.yaml
     lovelace-config-with-error:
       mode: yaml
       title: Config with error
