@@ -60,6 +60,14 @@ test('Option: override after', async ({ page }) => {
     await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot('06-override-after.png');
 });
 
+test('No config', async ({ page }) => {
+    await page.goto(
+        getLovelaceUrl('no-config')
+    );
+    await expect(page.locator(HEADER_SELECTOR)).toBeVisible();
+    await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot('07-no-config.png');
+});
+
 test('Should be the same after a window resize', async ({ page }) => {
     await page.goto(
         getLovelaceUrl()
@@ -89,7 +97,7 @@ test.describe('Small viewport', () => {
             getLovelaceUrl()
         );
         await expect(page.locator(HEADER_SELECTOR)).toBeVisible();
-        await expect(page.locator('.header')).toHaveScreenshot('06-mobile_config.png');
+        await expect(page.locator('.header')).toHaveScreenshot('08-mobile_config.png');
     });
 
 });
@@ -105,13 +113,13 @@ test('Edit a storage mode dashboard', async ({ page }) => {
     await page.locator(BUTTON_MENU).click();
     await page.getByRole('menuitem', { name: 'Edit dashboard' }).click();
     await expect(page.locator(EXIT_EDIT_MODE)).toBeVisible();
-    await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot('07-storage-mode-edit-view.png');
+    await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot('09-storage-mode-edit-view.png');
     await page.locator(BUTTON_MENU).click();
     await page.getByRole('menuitem', { name: 'Raw configuration editor' }).click();
     await expect(page.locator('hui-editor')).toBeVisible();
     await page.locator('ha-top-app-bar-fixed > ha-icon-button').click();
     await expect(page.locator(EXIT_EDIT_MODE)).toBeVisible();
-    await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot('07-storage-mode-edit-view.png');
+    await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot('09-storage-mode-edit-view.png');
     await page.locator('#add-view').click();
     await expect(page.locator(DIALOG_HEADER)).toBeVisible();
     await page.locator('input[name="title"]').fill('Account');
@@ -120,8 +128,8 @@ test('Edit a storage mode dashboard', async ({ page }) => {
     await page.locator('vaadin-combo-box-item').first().click();
     await page.locator('ha-dialog > mwc-button').last().click();
     await expect(page.locator(DIALOG_HEADER)).not.toBeVisible();
-    await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot('08-storage-mode-view-added.png');
+    await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot('10-storage-mode-view-added.png');
     await page.locator(EXIT_EDIT_MODE).click();
     await expect(page.locator(HEADER_SELECTOR)).toBeVisible();
-    await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot('09-tabs-content-after-view-added.png');
+    await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot('11-tabs-content-after-view-added.png');
 });
