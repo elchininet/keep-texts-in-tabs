@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from './baseFixtures';
 
 const BASE_PAGE = 'http://host.docker.internal:8123';
 const HEADER_SELECTOR = '.header ha-tabs paper-tab:last-of-type';

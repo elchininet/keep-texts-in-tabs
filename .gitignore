@@ -1,5 +1,7 @@
 /node_modules
 /dist
+/.nyc_output
+/coverage
 .DS_Store
 .hass/config/www/keep-texts-in-tabs.js
 /test-results/
