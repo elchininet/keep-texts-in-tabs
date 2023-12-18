@@ -1,0 +1,4 @@
+keep_texts_in_tabs:
+  position: after
+title: Not Enabled
+views: !include views.yaml

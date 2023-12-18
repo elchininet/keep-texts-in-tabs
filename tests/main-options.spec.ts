@@ -68,6 +68,14 @@ test('No config', async ({ page }) => {
     await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot('07-no-config.png');
 });
 
+test('Not enabled', async ({ page }) => {
+    await page.goto(
+        getLovelaceUrl('not-enabled')
+    );
+    await expect(page.locator(HEADER_SELECTOR)).toBeVisible();
+    await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot('07-no-config.png');
+});
+
 test('Should be the same after a window resize', async ({ page }) => {
     await page.goto(
         getLovelaceUrl()
