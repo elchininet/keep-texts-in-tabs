@@ -8,7 +8,8 @@
   "license": "Apache-2.0",
   "private": false,
   "scripts": {
-    "build": "rollup --config rollup.config.js --bundleConfigAsCjs",
+    "build": "yarn test:clean && rollup --config rollup.config.js --bundleConfigAsCjs",
+    "test:clean": "rm -rf dist .nyc_output coverage || true",
     "test:all": "yarn test:ts && yarn test:ci",
     "test:ci": "yarn demo && yarn start:playwright && yarn stop:ha",
     "test:run": "dotenv playwright test",

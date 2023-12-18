@@ -1,5 +1,8 @@
 keep_texts_in_tabs:
   enabled: true
   position: before
-title: Position
+  override:
+    - Muziek
+    - Planten
+title: Override Before
 views: !include views.yaml

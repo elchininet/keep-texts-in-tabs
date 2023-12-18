@@ -1,7 +1,8 @@
 keep_texts_in_tabs:
   enabled: true
-  exclude:
-    - Windy
+  position: after
+  override:
+    - Muziek
     - Planten
-title: Exclude
+title: Override After
 views: !include views.yaml
