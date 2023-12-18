@@ -1,5 +1,7 @@
 # Keep Texts in Tabs
-[![hacs_badge](https://img.shields.io/badge/HACS-Default-41BDF5.svg?style=for-the-badge)](https://github.com/hacs/integration)
+[![hacs_badge](https://img.shields.io/badge/HACS-Default-41BDF5.svg)](https://github.com/hacs/integration)
+[![release](https://img.shields.io/github/v/release/elchininet/keep-texts-in-tabs.svg)](https://github.com/elchininet/keep-texts-in-tabs/releases)
+[![downloads](https://img.shields.io/github/downloads/elchininet/keep-texts-in-tabs/total)](https://github.com/elchininet/keep-texts-in-tabs/releases)
 
 #### Avoid removing texts from Home Assistant tabs when icons are added to them
 
