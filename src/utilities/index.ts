@@ -38,12 +38,6 @@ export const addStyle = (elem: Element): void => {
     style.innerHTML = buildStyles();
 };
 
-export const removeStyle = (element: Element): void => {
-    if (styleExists(element)) {
-        element.querySelector(`#${NAMESPACE}`).remove();
-    }
-};
-
 export const logVersionToConsole = () => {
     console.info(
         `%c＋ ${NAMESPACE.toUpperCase()}%cv${version}`,
