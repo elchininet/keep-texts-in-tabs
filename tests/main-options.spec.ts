@@ -60,6 +60,16 @@ test('Option: override after', async ({ page }) => {
     await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot('06-override-after.png');
 });
 
+test('Should be the same after a window resize', async ({ page }) => {
+    await page.goto(
+        getLovelaceUrl()
+    );
+    await expect(page.locator(HEADER_SELECTOR)).toBeVisible();
+    await page.evaluate(() => window.dispatchEvent(new Event('resize')));
+    await page.waitForTimeout(200);
+    await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot('01-enabled.png');
+});
+
 test.describe('Small viewport', () => {
 
     test.use({ viewport: { width: 400, height: 600 } });
