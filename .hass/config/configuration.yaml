@@ -39,6 +39,10 @@ lovelace:
       mode: yaml
       title: Override after
       filename: ui-lovelace-override-after.yaml
+    lovelace-config-with-error:
+      mode: yaml
+      title: Config with error
+      filename: ui-lovelace-config-with-error.yaml
 
 # Load frontend themes from the themes folder
 frontend:

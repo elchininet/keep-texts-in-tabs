@@ -1,0 +1,10 @@
+keep_texts_in_tabs:
+  enabled: true
+  include:
+    - Muziek
+    - Alarmen
+  exclude:
+    - Windy
+    - Planten
+title: Config with error
+views: !include views.yaml
