@@ -39,6 +39,10 @@ lovelace:
       mode: yaml
       title: Override after
       filename: ui-lovelace-override-after.yaml
+    lovelace-no-config:
+      mode: yaml
+      title: No Config
+      filename: ui-lovelace-no-config.yaml
     lovelace-config-with-error:
       mode: yaml
       title: Config with error
