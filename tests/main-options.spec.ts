@@ -66,6 +66,7 @@ test('Should be the same after a window resize', async ({ page }) => {
     );
     await expect(page.locator(HEADER_SELECTOR)).toBeVisible();
     await page.evaluate(() => window.dispatchEvent(new Event('resize')));
+    await page.waitForTimeout(200);
     await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot('01-enabled.png');
 });
 
