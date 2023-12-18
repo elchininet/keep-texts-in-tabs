@@ -44,12 +44,20 @@ test('Option: exclude', async ({ page }) => {
     await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot('04-exclude.png');
 });
 
-test('Option: override', async ({ page }) => {
+test('Option: override before', async ({ page }) => {
     await page.goto(
-        getLovelaceUrl('override')
+        getLovelaceUrl('override-before')
     );
     await expect(page.locator(HEADER_SELECTOR)).toBeVisible();
-    await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot('05-override.png');
+    await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot('05-override-before.png');
+});
+
+test('Option: override after', async ({ page }) => {
+    await page.goto(
+        getLovelaceUrl('override-after')
+    );
+    await expect(page.locator(HEADER_SELECTOR)).toBeVisible();
+    await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot('06-override-after.png');
 });
 
 test.describe('Small viewport', () => {
