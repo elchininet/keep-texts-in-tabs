@@ -60,6 +60,28 @@ test('Option: override after', async ({ page }) => {
     await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot('06-override-after.png');
 });
 
+test('Edit a storage mode dashboard', async ({ page }) => {
+    await page.goto(
+        `${BASE_PAGE}/storage-view/home`
+    );
+    const BUTTON_MENU = '.action-items > ha-button-menu';
+    const EXIT_EDIT_MODE = 'mwc-button.exit-edit-mode';
+    await expect(page.locator(HEADER_SELECTOR)).toBeVisible();
+    await page.locator(BUTTON_MENU).click();
+    await page.getByRole('menuitem', { name: 'Edit dashboard' }).click();
+    await expect(page.locator(EXIT_EDIT_MODE)).toBeVisible();
+    await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot('07-storage-mode-edit-view.png');
+    await page.locator(BUTTON_MENU).click();
+    await page.getByRole('menuitem', { name: 'Raw configuration editor' }).click();
+    await expect(page.locator('hui-editor')).toBeVisible();
+    await page.locator('ha-top-app-bar-fixed > ha-icon-button').click();
+    await expect(page.locator(EXIT_EDIT_MODE)).toBeVisible();
+    await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot('07-storage-mode-edit-view.png');
+    await page.locator(EXIT_EDIT_MODE).click();
+    await expect(page.locator(HEADER_SELECTOR)).toBeVisible();
+    await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot('08-tabs-content-after-edit.png');
+});
+
 test.describe('Small viewport', () => {
 
     test.use({ viewport: { width: 400, height: 600 } });
