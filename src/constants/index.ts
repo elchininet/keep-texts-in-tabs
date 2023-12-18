@@ -11,7 +11,3 @@ export enum ELEMENT {
     HUI_VIEW = 'hui-view',
     HA_ICON = 'ha-icon'
 }
-
-export enum NODE_TYPE {
-    TEXT = 3
-}

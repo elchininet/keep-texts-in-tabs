@@ -11,7 +11,6 @@ import {
     ELEMENT,
     ARIA_LABEL_ATTRIBUTE,
     DEFAULT_MOBILE_WIDTH,
-    NODE_TYPE,
     WINDOW_RESIZE_DELAY
 } from '@constants';
 import {
@@ -156,13 +155,13 @@ class KeepTextsInTabs {
 
         if (enabled && editMode) {
             this.paperTabsEditionResolver = new MutationObserver((mutations: MutationRecord[]) => {
-                mutations.forEach(({ removedNodes, target }): void => {
-                    removedNodes.forEach((node: Element): void => {
+                mutations.forEach(({ addedNodes }): void => {
+                    addedNodes.forEach((node: Element): void => {
                         if (
-                            node.nodeType === NODE_TYPE.TEXT &&
-                            target.nodeName === ELEMENT.PAPER_TAB.toUpperCase()
+                            node.nodeType === Node.ELEMENT_NODE &&
+                            node.nodeName === ELEMENT.PAPER_TAB.toUpperCase()
                         ) {
-                            this.process(config);                            
+                            this.process(config);             
                         }
                     });
                 });
