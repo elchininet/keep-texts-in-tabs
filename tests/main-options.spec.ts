@@ -70,6 +70,16 @@ test('Should be the same after a window resize', async ({ page }) => {
     await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot('01-enabled.png');
 });
 
+test('Config with error', async ({ page }) => {
+    page.on('pageerror', error => {
+        expect(error.message).toBe('keep-texts-in-tabs: Configuration cannot have "include" and "exclude" properties at the same time');
+    });
+    await page.goto(
+        getLovelaceUrl('config-with-error')
+    );
+    await expect(page.locator(HEADER_SELECTOR)).toBeVisible();
+});
+
 test.describe('Small viewport', () => {
 
     test.use({ viewport: { width: 400, height: 600 } });
