@@ -1,4 +1,4 @@
-import { test, expect } from './baseFixtures';
+import { test, expect } from 'playwright-test-coverage';
 import {
     HEADER_SELECTOR,
     TABS_CONTENT_SELECTOR,
