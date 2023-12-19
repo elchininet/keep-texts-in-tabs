@@ -47,6 +47,14 @@ lovelace:
       mode: yaml
       title: Not Enabled
       filename: ui-lovelace-not-enabled.yaml
+    lovelace-no-tabs:
+      mode: yaml
+      title: No Tabs
+      filename: ui-lovelace-no-tabs.yaml
+    lovelace-no-texts:
+      mode: yaml
+      title: No Texts
+      filename: ui-lovelace-no-texts.yaml
     lovelace-config-with-error:
       mode: yaml
       title: Config with error
