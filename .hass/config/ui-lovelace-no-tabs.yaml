@@ -1,0 +1,6 @@
+keep_texts_in_tabs:
+  enabled: true
+  position: before
+title: No Tabs
+views:
+  - title: Home
