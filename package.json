@@ -40,6 +40,6 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "home-assistant-query-selector": "^2.1.4"
+    "home-assistant-query-selector": "^2.1.5"
   }
 }
