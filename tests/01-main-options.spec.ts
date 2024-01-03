@@ -1,9 +1,5 @@
 import { test, expect } from 'playwright-test-coverage';
-import {
-    HEADER_SELECTOR,
-    TABS_CONTENT_SELECTOR,
-    BASE_PAGE
-} from './constants';
+import { HEADER_SELECTOR, TABS_CONTENT_SELECTOR } from './constants';
 import { getLovelaceUrl } from './utilities';
 
 test('Option: enabled', async ({ page }) => {
