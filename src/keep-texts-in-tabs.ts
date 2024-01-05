@@ -23,7 +23,7 @@ class KeepTextsInTabs {
 
     constructor() {
         const selector = new HAQuerySelector();
-        selector.addEventListener(HAQuerySelectorEvent.ON_PANEL_LOAD, async (event) => {
+        selector.addEventListener(HAQuerySelectorEvent.ON_LOVELACE_PANEL_LOAD, async (event) => {
             const {
                 HA_PANEL_LOVELACE,
                 HUI_ROOT,
