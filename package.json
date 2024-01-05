@@ -1,6 +1,6 @@
 {
   "name": "keep-texts-in-tabs",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Avoid removing texts from Home Assistant tabs when icons are added to them",
   "main": "keep-texts-in-tabs.js",
   "repository": "git@github.com:elchininet/keep-texts-in-tabs.git",
