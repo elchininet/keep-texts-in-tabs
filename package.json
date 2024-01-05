@@ -8,17 +8,18 @@
   "license": "Apache-2.0",
   "private": false,
   "scripts": {
-    "build": "yarn test:clean && rollup --config rollup.config.js --bundleConfigAsCjs",
+    "build": "yarn clean && rollup --config rollup.config.js --bundleConfigAsCjs",
+    "clean": "rm -rf dist || true",
     "test:clean": "rm -rf dist .nyc_output coverage || true",
     "test:all": "yarn test:ts && yarn test:ci",
-    "test:ci": "yarn demo && yarn start:playwright && yarn stop:ha",
+    "test:ci": "yarn test:clean && yarn demo && yarn start:playwright && yarn stop:ha",
     "test:run": "dotenv playwright test",
     "test:open": "playwright test --ui",
     "test:ts": "tsc --noEmit",
-    "start:ha": "docker run --rm -d -p8123:8123 --shm-size=512m -v ${PWD}/.hass/config:/config homeassistant/home-assistant:2023.11.1",
-    "stop:ha": "docker stop $(docker ps -a -q  --filter ancestor=homeassistant/home-assistant:2023.11.1) || true",
+    "start:ha": "docker run --rm -d -p8123:8123 --shm-size=512m -v ${PWD}/.hass/config:/config homeassistant/home-assistant:2024.1.0",
+    "stop:ha": "docker stop $(docker ps -a -q  --filter ancestor=homeassistant/home-assistant:2024.1.0) || true",
     "demo": "yarn build && yarn start:ha",
-    "start:playwright": "docker run --rm --network host --add-host host.docker.internal:host-gateway -v $(pwd):/$(pwd)/ -w $(pwd) -i mcr.microsoft.com/playwright:v1.40.0-jammy sh -c \"yarn install --frozen-lockfile && yarn test:run && exit\"",
+    "start:playwright": "docker run --rm --network host --add-host host.docker.internal:host-gateway -v $(pwd):/$(pwd)/ -w $(pwd) -i mcr.microsoft.com/playwright:v1.40.0-jammy sh -c \"yarn test:run && exit\"",
     "coverage:report": "nyc report --reporter=lcov --reporter=text-summary",
     "prepare": "yarn build",
     "prepublishOnly": "yarn test:all",
@@ -40,6 +41,6 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "home-assistant-query-selector": "^3.0.0"
+    "home-assistant-query-selector": "^4.0.0"
   }
 }
