@@ -20,7 +20,7 @@
     "stop:ha": "docker stop $(docker ps -a -q  --filter ancestor=homeassistant/home-assistant:${TAG:-$(cat .hass/config/.HA_VERSION)}) || true",
     "reset:ha": "git add .hass/config/.HA_VERSION && git checkout .hass/config",
     "demo": "yarn build && yarn start:ha",
-    "start:playwright": "docker run --rm --network host --add-host host.docker.internal:host-gateway -v $(pwd):/$(pwd)/ -w $(pwd) -i mcr.microsoft.com/playwright:v1.40.0-jammy sh -c \"yarn test:run && exit\"",
+    "start:playwright": "docker run --rm --network host --add-host host.docker.internal:host-gateway -v $(pwd):/$(pwd)/ -w $(pwd) -i mcr.microsoft.com/playwright:$(cat .playwright_docker_version) sh -c \"yarn test:run && exit\"",
     "coverage:report": "nyc report --reporter=lcov --reporter=text-summary",
     "prepare": "yarn build",
     "prepublishOnly": "yarn test:all",
