@@ -155,18 +155,28 @@ class KeepTextsInTabs {
 
         if (enabled && editMode) {
             this.paperTabsEditionResolver = new MutationObserver((mutations: MutationRecord[]) => {
-                mutations.forEach(({ addedNodes }): void => {
-                    addedNodes.forEach((node: Element): void => {
+                for (const mutationRecord of mutations) {
+                    const { addedNodes, attributeName } = mutationRecord;
+                    if (attributeName === ARIA_LABEL_ATTRIBUTE) {
+                        this.process(config);
+                        break;
+                    }
+                    for (const node of addedNodes) {
                         if (
                             node.nodeType === Node.ELEMENT_NODE &&
-                            node.nodeName === ELEMENT.PAPER_TAB.toUpperCase()
+                            (
+                                node.nodeName === ELEMENT.PAPER_TAB.toUpperCase() ||
+                                node.nodeName === ELEMENT.HA_ICON.toUpperCase()
+                            )
                         ) {
-                            this.process(config);             
+                            this.process(config);
+                            break;  
                         }
-                    });
-                });
+                    }
+                }
             });
             this.paperTabsEditionResolver.observe(this.huiRoot.querySelector<HTMLElement>(ELEMENT.PAPER_TABS), {
+                attributeFilter: [ ARIA_LABEL_ATTRIBUTE ],
                 childList: true,
                 subtree: true,
             });
