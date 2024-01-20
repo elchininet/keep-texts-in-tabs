@@ -14,7 +14,7 @@ export interface Config {
 export interface KeepTextsInTabsConfig extends Config {
     mobile_config?: Config & {
         mobile_screen_width?: number;
-    };  
+    };
 }
 
 export interface Lovelace extends HTMLElement {

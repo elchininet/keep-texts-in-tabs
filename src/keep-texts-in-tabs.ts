@@ -29,7 +29,7 @@ class KeepTextsInTabs {
                 HUI_ROOT,
                 HEADER
             } = event.detail;
-            
+
             this.lovelace = await HA_PANEL_LOVELACE.element as Lovelace;
             this.huiRoot = await HUI_ROOT.selector.$.element;
             this.appToolbar = await HEADER.selector.query(ELEMENT.TOOLBAR).element;
@@ -37,7 +37,7 @@ class KeepTextsInTabs {
         });
         selector.listen();
         this.resizeWindowBinded = this.resizeWindow.bind(this);
-        window.addEventListener('resize', this.resizeWindowBinded);         
+        window.addEventListener('resize', this.resizeWindowBinded);
     }
 
     private lovelace: Lovelace;
@@ -56,11 +56,11 @@ class KeepTextsInTabs {
         addStyle(this.appToolbar);
 
         // Get the configuration and process it
-        const config = this.lovelace.lovelace.config;        
+        const config = this.lovelace.lovelace.config;
 
         this.toolBarObserver = new MutationObserver(this.process.bind(this, config.keep_texts_in_tabs));
         this.toolBarObserver.observe(this.appToolbar, {
-            childList: true,
+            childList: true
         });
 
         this.process(config.keep_texts_in_tabs);
@@ -79,7 +79,7 @@ class KeepTextsInTabs {
             config.mobile_config &&
             window.innerWidth <= (config.mobile_config.mobile_screen_width || DEFAULT_MOBILE_WIDTH)
         ) {
-            conf = config.mobile_config
+            conf = config.mobile_config;
         } else {
             conf = config;
         }
@@ -109,7 +109,7 @@ class KeepTextsInTabs {
         if (!paperTabs.length) return;
 
         const overrideCapital = override.map((label: string): string => label.toUpperCase());
-        
+
         const paperTabsArray = paperTabs
             .map((paperTab: HTMLElement): Tab => {
                 const label = paperTab.getAttribute(ARIA_LABEL_ATTRIBUTE) || '';
@@ -136,10 +136,10 @@ class KeepTextsInTabs {
                     !tab.icon
                 ) return false;
                 if (include) {
-                    return include.includes(tab.label)
+                    return include.includes(tab.label);
                 }
                 if (exclude) {
-                    return !exclude.includes(tab.label)
+                    return !exclude.includes(tab.label);
                 }
                 return true;
             });
@@ -170,15 +170,15 @@ class KeepTextsInTabs {
                             )
                         ) {
                             this.process(config);
-                            break;  
+                            break;
                         }
                     }
                 }
             });
             this.paperTabsEditionResolver.observe(this.huiRoot.querySelector<HTMLElement>(ELEMENT.PAPER_TABS), {
-                attributeFilter: [ ARIA_LABEL_ATTRIBUTE ],
+                attributeFilter: [ARIA_LABEL_ATTRIBUTE],
                 childList: true,
-                subtree: true,
+                subtree: true
             });
 
         }
@@ -190,9 +190,9 @@ class KeepTextsInTabs {
     protected resizeWindow() {
         window.clearTimeout(this.resizeDelay);
         this.resizeDelay = window.setTimeout(() => {
-          this.run();
+            this.run();
         }, WINDOW_RESIZE_DELAY);
-      }
+    }
 
 }
 
