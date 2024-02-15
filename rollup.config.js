@@ -38,7 +38,7 @@ export default [
                     'node_modules/**/*',
                     'package.json'
                 ]
-            }),
+            })
         ],
         input: 'src/keep-texts-in-tabs.ts',
         output: {
