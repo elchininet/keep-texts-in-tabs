@@ -1,4 +1,7 @@
 # Keep Texts in Tabs
+
+#### Keep texts in Home Assistant dashboards tabs when icons are added to them
+
 [![hacs_badge](https://img.shields.io/badge/HACS-Default-41BDF5.svg)](https://github.com/hacs/integration)
 [![Test](https://github.com/elchininet/keep-texts-in-tabs/actions/workflows/test.yaml/badge.svg)](https://github.com/elchininet/keep-texts-in-tabs/actions/workflows/test.yaml)
 [![Coverage Status](https://coveralls.io/repos/github/elchininet/keep-texts-in-tabs/badge.svg?branch=master)](https://coveralls.io/github/elchininet/keep-texts-in-tabs?branch=master)
@@ -6,8 +9,6 @@
 [![downloads](https://img.shields.io/github/downloads/elchininet/keep-texts-in-tabs/total)](https://github.com/elchininet/keep-texts-in-tabs/releases)
 
 [![Home Assistant Nightly Beta Tests](https://github.com/elchininet/keep-texts-in-tabs/actions/workflows/ha-beta-tests.yaml/badge.svg)](https://github.com/elchininet/keep-texts-in-tabs/actions/workflows/ha-beta-tests.yaml)
-
-#### Avoid removing texts from Home Assistant tabs when icons are added to them
 
 In [Home Assistant] it is possible to create different [views] in a dashboard, each view will be accesible with a tab.
 
