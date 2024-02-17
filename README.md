@@ -200,7 +200,7 @@ keep_texts_in_tabs:
   enabled: true
   position: before
   mobile_config:
-    enabled: true
+    enabled: false
     mobile_screen_width: 340
 ```
 
