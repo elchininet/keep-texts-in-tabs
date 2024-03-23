@@ -26,7 +26,7 @@ However, it is not possible to have both, icons and texts, –something that it 
 
 ## Installation
 
-You need to install the plugin manually or through [HACS], not both. If you install the plugin using the two installations methods you could have issues or errors.
+You need to install the plugin through [HACS] or manually, not both. If you install the plugin using the two installations methods you could have issues or errors.
 
 ### Through HACS
 
@@ -34,6 +34,23 @@ You need to install the plugin manually or through [HACS], not both. If you inst
 2. Go to `Frontend`
 3. Click on `Explore and download repositories` button in the bottom-right of the screen
 4. Search for `keep-texts-in-tabs` and install it
+
+#### If you are in storage mode (default mode)
+
+That‘s it, you have properly installed the plugin
+
+#### If you are in yaml mode
+
+1. Go to your `configuration.yaml`
+2. Add the URL to the installed plugin under the `extra_module_url` array of the `frontend` section
+
+```yaml
+frontend:
+  extra_module_url:
+    - /hacsfiles/keep-texts-in-tabs/keep-texts-in-tabs.js?v=1.0.0
+```
+
+3. Make sure you add the correct version at the end of the URL (e.g. `?v=1.0.0`) because in this way you make Home Assistant to load the new version on each update instead of a version stored in cache
 
 ### Manual installation
 
@@ -60,7 +77,7 @@ frontend:
     - /local/keep-texts-in-tabs.js?v=1.0.0
 ```
 
-4. Make sure you add the correct version at the end of the URL (e.g. `?v=1.0.0`) because in this way you make Home Assistant to load the new version instead of a version stored in cache
+4. Make sure you add the correct version at the end of the URL (e.g. `?v=1.0.0`) because in this way you make Home Assistant to load the new version on each update instead of a version stored in cache
 
 ## Configuration
 
