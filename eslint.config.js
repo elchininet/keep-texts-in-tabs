@@ -31,7 +31,7 @@ module.exports = [
             'comma-dangle': ['error', 'never'],
             'no-trailing-spaces': ['error'],
             'array-bracket-spacing': ['error', 'never'],
-            'comma-spacing': ['error'],			
+            'comma-spacing': ['error'],
             '@typescript-eslint/no-var-requires': 'off'
         }
     }
