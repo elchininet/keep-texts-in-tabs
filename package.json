@@ -35,17 +35,17 @@
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-terser": "^0.4.4",
     "@stylistic/eslint-plugin-js": "^2.1.0",
-    "@types/node": "^20.13.0",
+    "@types/node": "^20.14.2",
     "eslint": "^9.4.0",
-    "globals": "^15.3.0",
+    "globals": "^15.4.0",
     "nyc": "^15.1.0",
     "playwright-test-coverage": "^1.2.12",
     "rollup": "^4.18.0",
     "rollup-plugin-istanbul": "^5.0.0",
     "rollup-plugin-ts": "^3.4.5",
-    "tslib": "^2.6.2",
+    "tslib": "^2.6.3",
     "typescript": "^5.4.5",
-    "typescript-eslint": "^7.11.0"
+    "typescript-eslint": "^7.12.0"
   },
   "dependencies": {
     "home-assistant-query-selector": "^4.2.0"
