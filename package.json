@@ -30,22 +30,22 @@
     "postversion": "git push && git push --tags"
   },
   "devDependencies": {
-    "@playwright/test": "^1.44.1",
+    "@playwright/test": "^1.45.1",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-terser": "^0.4.4",
-    "@stylistic/eslint-plugin-js": "^2.2.2",
-    "@types/node": "^20.14.8",
-    "eslint": "^9.5.0",
-    "globals": "^15.6.0",
+    "@stylistic/eslint-plugin-js": "^2.3.0",
+    "@types/node": "^20.14.9",
+    "eslint": "^9.6.0",
+    "globals": "^15.8.0",
     "nyc": "^17.0.0",
     "playwright-test-coverage": "^1.2.12",
     "rollup": "^4.18.0",
     "rollup-plugin-istanbul": "^5.0.0",
     "rollup-plugin-ts": "^3.4.5",
     "tslib": "^2.6.3",
-    "typescript": "^5.5.2",
-    "typescript-eslint": "^7.13.1"
+    "typescript": "^5.5.3",
+    "typescript-eslint": "^7.15.0"
   },
   "dependencies": {
     "home-assistant-query-selector": "^4.2.0"
