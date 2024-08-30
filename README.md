@@ -28,7 +28,31 @@ However, it is not possible to have both, icons and texts, –something that it 
 
 You need to install the plugin through [HACS] or manually, not both. If you install the plugin using the two installations methods you could have issues or errors.
 
-### Through HACS
+### Through HACS (v2 or greather)
+
+>Note: if your version of `HACS` is lower than `v2` consult the section [Through old HACS versions (< v2)](#through-old-hacs-versions--v2)
+
+1. Go to `HACS` dashboard
+2. Search for `keep-texts-in-tabs` and click on it
+7. On the plugin page, click on the `Download` yellow button in the bottom-right corner
+8. Click on `Download` in the more-info dialog
+
+#### If you are in storage mode (default mode)
+
+That‘s it, you have properly installed the plugin
+
+#### If you are in yaml mode
+
+1. Go to your `configuration.yaml`
+2. Add the URL to the installed plugin under the `extra_module_url` array of the `frontend` section
+
+```yaml
+frontend:
+  extra_module_url:
+    - /hacsfiles/keep-texts-in-tabs/keep-texts-in-tabs.js?v=1.0.0
+```
+
+### Through old HACS versions (< v2)
 
 1. Go to `HACS` dashboard
 2. Go to `Frontend`
