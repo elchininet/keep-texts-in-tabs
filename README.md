@@ -52,6 +52,8 @@ frontend:
     - /hacsfiles/keep-texts-in-tabs/keep-texts-in-tabs.js?v=1.0.0
 ```
 
+3. Make sure you add the correct version at the end of the URL (e.g. `?v=1.0.0`) because in this way you make Home Assistant to load the new version on each update instead of a version stored in cache
+
 ### Through old HACS versions (< v2)
 
 1. Go to `HACS` dashboard
