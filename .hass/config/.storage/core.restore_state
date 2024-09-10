@@ -4,63 +4,24 @@
   "key": "core.restore_state",
   "data": [
     {
-      "state": {
-        "entity_id": "person.test",
-        "state": "unknown",
-        "attributes": {
-          "editable": true,
-          "id": "test",
-          "user_id": "ec313e3c38fb4d60b44e0db03cdc1250",
-          "device_trackers": [],
-          "friendly_name": "Test"
-        },
-        "last_changed": "2023-11-24T11:20:52.297672+00:00",
-        "last_updated": "2023-11-24T11:20:53.391690+00:00",
-        "context": {
-          "id": "01HG0GZAWF0X2F1Q1EFCC0KVR3",
-          "parent_id": null,
-          "user_id": null
-        }
-      },
+      "state": {"entity_id":"person.test","state":"unknown","attributes":{"editable":true,"id":"test","device_trackers":[],"user_id":"ec313e3c38fb4d60b44e0db03cdc1250","friendly_name":"Test"},"last_changed":"2024-09-10T17:36:54.069429+00:00","last_reported":"2024-09-10T17:36:54.820473+00:00","last_updated":"2024-09-10T17:36:54.820473+00:00","context":{"id":"01J7EG50H40CZJDADQ6D6K07DB","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2023-11-24T11:21:32.159803+00:00"
+      "last_seen": "2024-09-10T17:39:05.341836+00:00"
     },
     {
-      "state": {
-        "entity_id": "timer.laundry",
-        "state": "idle",
-        "attributes": {
-          "duration": "0:01:00",
-          "editable": false
-        },
-        "last_changed": "2023-12-18T17:37:14.160588+00:00",
-        "last_updated": "2023-12-18T17:37:14.160588+00:00",
-        "context": {
-          "id": "01HHZ01PDG11YFKNPTA2EQ7RGX",
-          "parent_id": null,
-          "user_id": null
-        }
-      },
+      "state": {"entity_id":"tts.google_en_com","state":"unknown","attributes":{"friendly_name":"Google Translate en com"},"last_changed":"2024-09-10T17:36:54.537310+00:00","last_reported":"2024-09-10T17:36:54.537310+00:00","last_updated":"2024-09-10T17:36:54.537310+00:00","context":{"id":"01J7EG50893WZ1JVZRY1278B49","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2023-12-18T19:16:54.923413+00:00"
+      "last_seen": "2024-09-10T17:39:05.341836+00:00"
     },
     {
-      "state": {
-        "entity_id": "tts.google_en_com",
-        "state": "unknown",
-        "attributes": {
-          "friendly_name": "Google en com"
-        },
-        "last_changed": "2023-12-18T17:37:14.444252+00:00",
-        "last_updated": "2023-12-18T17:37:14.444252+00:00",
-        "context": {
-          "id": "01HHZ01PPCH5DV00BCG21EE0V8",
-          "parent_id": null,
-          "user_id": null
-        }
-      },
+      "state": {"entity_id":"timer.laundry","state":"idle","attributes":{"duration":"0:01:00","editable":false},"last_changed":"2024-09-10T17:36:54.542457+00:00","last_reported":"2024-09-10T17:36:54.542457+00:00","last_updated":"2024-09-10T17:36:54.542457+00:00","context":{"id":"01J7EG508EBTQPBXAJ7P2MSVH6","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2023-12-18T19:16:54.923413+00:00"
+      "last_seen": "2024-09-10T17:39:05.341836+00:00"
+    },
+    {
+      "state": {"entity_id":"conversation.home_assistant","state":"unknown","attributes":{"friendly_name":"Home Assistant","supported_features":1},"last_changed":"2024-09-10T17:36:54.548387+00:00","last_reported":"2024-09-10T17:36:54.548387+00:00","last_updated":"2024-09-10T17:36:54.548387+00:00","context":{"id":"01J7EG508MWXNC6J04MYGK78VN","parent_id":null,"user_id":null}},
+      "extra_data": null,
+      "last_seen": "2024-09-10T17:39:05.341836+00:00"
     }
   ]
 }
