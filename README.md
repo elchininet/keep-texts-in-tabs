@@ -112,8 +112,8 @@ Configuration also depends on your dashboard management method:
 #### If you are in storage mode (default mode)
 
 1. Go to the dashboard in which you want to add the configuration
-2. Click on the three dots located on the top-right corner and then click on `Edit Dashboard`
-3. Click again on the three dots located on the top-right corner and then click on `Raw configuration editor`
+2. Click on the pencil icon located on the top-right corner (`Edit dashboard`)
+3. Click on the three dots located on the top-right corner and then click on `Raw configuration editor`
 4. Add the configuration at the very beginning of the the code
 
 #### If you are in yaml mode
