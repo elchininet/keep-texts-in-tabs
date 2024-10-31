@@ -28,7 +28,7 @@ However, it is not possible to have both, icons and texts, –something that it 
 
 You need to install the plugin through [HACS] or manually, not both. If you install the plugin using the two installations methods you could have issues or errors.
 
-### Through HACS (v2 or greather)
+### Through HACS (v2 or greater)
 
 >Note: if your version of `HACS` is lower than `v2` consult the section [Through old HACS versions (< v2)](#through-old-hacs-versions--v2)
 
