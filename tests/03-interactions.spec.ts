@@ -53,7 +53,8 @@ test('Adding a new view', async ({ page }) => {
     await page.locator('ha-selector-icon').click();
     await expect(page.locator('vaadin-combo-box-overlay')).toBeVisible();
     await page.locator('vaadin-combo-box-item').first().click();
-    await page.locator('ha-dialog > mwc-button').last().click();
+    // mwc-button in HA in 2024.10.x / ha-button in HA 2024.11+
+    await page.locator('ha-dialog > :is(mwc-button, ha-button)').click();
     await expect(page.locator(DIALOG_HEADER)).not.toBeVisible();
     await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot('03-storage-mode-view-added.png');
     await page.locator(EXIT_EDIT_MODE).click();
@@ -66,7 +67,8 @@ test('Adding a new view', async ({ page }) => {
     await page.locator('ha-svg-icon.edit-icon.view:visible').click();
     await expect(page.locator(DIALOG_HEADER)).toBeVisible();
     await page.locator('vaadin-combo-box-light > ha-svg-icon.clear-button').click();
-    await page.locator('ha-dialog > mwc-button').last().click();
+    // mwc-button in HA in 2024.10.x / ha-button in HA 2024.11+
+    await page.locator('ha-dialog > :is(mwc-button, ha-button)').last().click();
     await expect(page.locator(DIALOG_HEADER)).not.toBeVisible();
     await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot('05-tabs-content-after-icon-removed.png');
 
@@ -75,7 +77,8 @@ test('Adding a new view', async ({ page }) => {
     await page.locator('ha-selector-icon').click();
     await expect(page.locator('vaadin-combo-box-overlay')).toBeVisible();
     await page.locator('vaadin-combo-box-item').first().click();
-    await page.locator('ha-dialog > mwc-button').last().click();
+    // mwc-button in HA in 2024.10.x / ha-button in HA 2024.11+
+    await page.locator('ha-dialog > :is(mwc-button, ha-button)').last().click();
     await expect(page.locator(DIALOG_HEADER)).not.toBeVisible();
     await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot('03-storage-mode-view-added.png');
     await page.locator(EXIT_EDIT_MODE).click();
