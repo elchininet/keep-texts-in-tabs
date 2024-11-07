@@ -1,4 +1,5 @@
 import { HAQuerySelector, HAQuerySelectorEvent } from 'home-assistant-query-selector';
+import { HomeAssistantStylesManager } from 'home-assistant-styles-manager';
 import {
     Lovelace,
     KeepTextsInTabsConfig,
@@ -15,13 +16,17 @@ import {
 } from '@constants';
 import {
     getSpan,
-    addStyle,
+    buildStyles,
     logVersionToConsole
 } from '@utilities';
 
 class KeepTextsInTabs {
 
     constructor() {
+        this.styleManager = new HomeAssistantStylesManager({
+            prefix: NAMESPACE,
+            throwWarnings: false
+        });
         const selector = new HAQuerySelector();
         selector.addEventListener(HAQuerySelectorEvent.ON_LOVELACE_PANEL_LOAD, async (event) => {
             const {
@@ -40,6 +45,7 @@ class KeepTextsInTabs {
         window.addEventListener('resize', this.resizeWindowBinded);
     }
 
+    private styleManager: HomeAssistantStylesManager;
     private lovelace: Lovelace;
     private huiRoot: ShadowRoot;
     private appToolbar: Element;
@@ -53,7 +59,10 @@ class KeepTextsInTabs {
     protected async run() {
         this.toolBarObserver?.disconnect();
 
-        addStyle(this.appToolbar);
+        this.styleManager.addStyle(
+            buildStyles(),
+            this.appToolbar
+        );
 
         // Get the configuration and process it
         const config = this.lovelace.lovelace.config;
