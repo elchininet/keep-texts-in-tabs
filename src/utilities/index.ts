@@ -10,7 +10,7 @@ export const getSpan = (text: string, position: Position): HTMLSpanElement => {
     return span;
 };
 
-const buildStyles = (): string => {
+export const buildStyles = (): string => {
     return `
         paper-tab span.${NAMESPACE} {
             display: inline-block;
@@ -22,20 +22,6 @@ const buildStyles = (): string => {
             padding-left: 5px;
         }
     `;
-};
-
-const styleExists = (elem: Element): HTMLStyleElement => {
-    return elem.querySelector<HTMLStyleElement>(`#${NAMESPACE}`);
-};
-
-export const addStyle = (elem: Element): void => {
-    let style = styleExists(elem);
-    if (!style) {
-        style = document.createElement('style');
-        style.setAttribute('id', NAMESPACE);
-        elem.appendChild(style);
-    }
-    style.innerHTML = buildStyles();
 };
 
 export const logVersionToConsole = () => {
