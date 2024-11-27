@@ -13,16 +13,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Install pnpm
-        uses: pnpm/action-setup@v3
+        uses: pnpm/action-setup@v4
         with:
           version: 9
           run_install: false
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: 20
           cache: 'pnpm'
-      - name: Install
+      - name: Install deps
         run: pnpm install
       - name: E2E tests
         run: pnpm test:all
@@ -32,7 +32,7 @@ jobs:
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: test-report
