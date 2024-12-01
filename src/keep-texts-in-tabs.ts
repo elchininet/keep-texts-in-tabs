@@ -12,13 +12,10 @@ import {
     ELEMENT,
     ARIA_LABEL_ATTRIBUTE,
     DEFAULT_MOBILE_WIDTH,
-    WINDOW_RESIZE_DELAY
+    WINDOW_RESIZE_DELAY,
+    STYLES
 } from '@constants';
-import {
-    getSpan,
-    buildStyles,
-    logVersionToConsole
-} from '@utilities';
+import { getSpan, logVersionToConsole } from '@utilities';
 
 class KeepTextsInTabs {
 
@@ -60,7 +57,7 @@ class KeepTextsInTabs {
         this.toolBarObserver?.disconnect();
 
         this.styleManager.addStyle(
-            buildStyles(),
+            STYLES,
             this.appToolbar
         );
 
