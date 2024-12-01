@@ -10,20 +10,6 @@ export const getSpan = (text: string, position: Position): HTMLSpanElement => {
     return span;
 };
 
-export const buildStyles = (): string => {
-    return `
-        paper-tab span.${NAMESPACE} {
-            display: inline-block;
-        }
-        paper-tab span.${NAMESPACE}-${Position.BEFORE} {
-            padding-right: 5px;
-        }
-        paper-tab span.${NAMESPACE}-${Position.AFTER} {
-            padding-left: 5px;
-        }
-    `;
-};
-
 export const logVersionToConsole = () => {
     console.info(
         `%c＋ ${NAMESPACE.toUpperCase()}%cv${version}`,
