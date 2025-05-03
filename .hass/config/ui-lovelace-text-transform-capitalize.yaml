@@ -1,0 +1,5 @@
+keep_texts_in_tabs:
+  enabled: true
+  text_transform: capitalize
+title: Text Transform Capitalize
+views: !include views.yaml

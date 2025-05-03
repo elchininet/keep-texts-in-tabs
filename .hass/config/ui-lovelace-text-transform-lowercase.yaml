@@ -1,0 +1,5 @@
+keep_texts_in_tabs:
+  enabled: true
+  text_transform: lowercase
+title: Text Transform Lowercase
+views: !include views.yaml

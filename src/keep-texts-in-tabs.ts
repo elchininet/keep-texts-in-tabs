@@ -48,7 +48,7 @@ class KeepTextsInTabs {
     private appToolbar: Element;
 
     private toolBarObserver: MutationObserver;
-    private paperTabsEditionResolver: MutationObserver;
+    private tabsEditionResolver: MutationObserver;
 
     private resizeDelay: number;
     private resizeWindowBinded: () => void;
@@ -75,7 +75,7 @@ class KeepTextsInTabs {
 
     protected process(config: KeepTextsInTabsConfig | undefined) {
 
-        this.paperTabsEditionResolver?.disconnect();
+        this.tabsEditionResolver?.disconnect();
 
         if (!config) return;
 
@@ -95,7 +95,8 @@ class KeepTextsInTabs {
             include,
             exclude,
             position = Position.AFTER,
-            override = []
+            override = [],
+            text_transform
         } = conf;
 
         if (include && exclude) {
@@ -103,31 +104,31 @@ class KeepTextsInTabs {
         }
 
         const editMode = !!this.huiRoot.querySelector(`:host > div.edit-mode`);
-        const paperTabsContainer = editMode
-            ? this.huiRoot.querySelector<TabContainer>(ELEMENT.PAPER_TABS)
-            : this.appToolbar.querySelector<TabContainer>(ELEMENT.HA_TABS);
-        const paperTabs: HTMLElement[] = paperTabsContainer
+        const tabsContainer = editMode
+            ? this.huiRoot.querySelector<TabContainer>(ELEMENT.SL_TAB_GROUP)
+            : this.appToolbar.querySelector<TabContainer>(ELEMENT.SL_TAB_GROUP);
+        const tabs: HTMLElement[] = tabsContainer
             ? Array.from(
-                paperTabsContainer.querySelectorAll<HTMLElement>(ELEMENT.PAPER_TAB)
+                tabsContainer.querySelectorAll<HTMLElement>(ELEMENT.SL_TAB)
             )
             : [];
 
-        if (!paperTabs.length) return;
+        if (!tabs.length) return;
 
-        const overrideCapital = override.map((label: string): string => label.toUpperCase());
+        const overrideLowercase = override.map((label: string): string => label.toLowerCase());
 
-        const paperTabsArray = paperTabs
-            .map((paperTab: HTMLElement): Tab => {
-                const label = paperTab.getAttribute(ARIA_LABEL_ATTRIBUTE) || '';
-                const span = paperTab.querySelector(`span.${NAMESPACE}`);
+        const tabsArray = tabs
+            .map((tab: HTMLElement): Tab => {
+                const label = tab.getAttribute(ARIA_LABEL_ATTRIBUTE) || '';
+                const span = tab.querySelector(`span.${NAMESPACE}`);
                 if (span) {
                     span.remove();
                 }
                 return {
-                    element: paperTab,
+                    element: tab,
                     label,
-                    icon: paperTab.querySelector(ELEMENT.HA_ICON),
-                    position: overrideCapital.includes(label.toUpperCase())
+                    icon: tab.querySelector(ELEMENT.HA_ICON),
+                    position: overrideLowercase.includes(label.toLowerCase())
                         ? (
                             position === Position.AFTER
                                 ? Position.BEFORE
@@ -150,8 +151,12 @@ class KeepTextsInTabs {
                 return true;
             });
 
-        paperTabsArray.forEach((tab: Tab): void => {
-            const span = getSpan(tab.label, tab.position);
+        tabsArray.forEach((tab: Tab): void => {
+            const span = getSpan(
+                tab.label,
+                tab.position,
+                text_transform
+            );
             if (tab.position === Position.AFTER) {
                 tab.element.insertBefore(span, tab.icon.nextSibling);
             } else {
@@ -160,7 +165,7 @@ class KeepTextsInTabs {
         });
 
         if (enabled && editMode) {
-            this.paperTabsEditionResolver = new MutationObserver((mutations: MutationRecord[]) => {
+            this.tabsEditionResolver = new MutationObserver((mutations: MutationRecord[]) => {
                 for (const mutationRecord of mutations) {
                     const { addedNodes, attributeName } = mutationRecord;
                     if (attributeName === ARIA_LABEL_ATTRIBUTE) {
@@ -171,7 +176,7 @@ class KeepTextsInTabs {
                         if (
                             node.nodeType === Node.ELEMENT_NODE &&
                             (
-                                node.nodeName === ELEMENT.PAPER_TAB.toUpperCase() ||
+                                node.nodeName === ELEMENT.SL_TAB.toUpperCase() ||
                                 node.nodeName === ELEMENT.HA_ICON.toUpperCase()
                             )
                         ) {
@@ -181,15 +186,15 @@ class KeepTextsInTabs {
                     }
                 }
             });
-            this.paperTabsEditionResolver.observe(this.huiRoot.querySelector<HTMLElement>(ELEMENT.PAPER_TABS), {
+            this.tabsEditionResolver.observe(this.huiRoot.querySelector<HTMLElement>(ELEMENT.SL_TAB_GROUP), {
                 attributeFilter: [ARIA_LABEL_ATTRIBUTE],
                 childList: true,
                 subtree: true
             });
 
         }
-        if (typeof paperTabsContainer._boundNotifyResize === 'function') {
-            paperTabsContainer._boundNotifyResize();
+        if (typeof tabsContainer._boundNotifyResize === 'function') {
+            tabsContainer._boundNotifyResize();
         }
     }
 

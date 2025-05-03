@@ -219,6 +219,30 @@ keep_texts_in_tabs:
 
 ![image](images/options/override.png)
 
+### text_transform
+
+Set the text transformation. Allowed values are `capitalize` (which is the default value and sets the first character in capital letter), `uppercase` (which converts the whole text to uppercase) and `lowercase` (which converts the whole text to lowercase).
+
+#### Examples
+
+```yaml
+keep_texts_in_tabs:
+  enabled: true
+  text_transform: lowercase
+```
+
+![image](images/options/lowercase.png)
+
+```yaml
+keep_texts_in_tabs:
+  enabled: true
+  text_transform: uppercase
+```
+
+![image](images/options/uppercase.png)
+
+---
+
 ### mobile_config
 
 If this options is not used, the same configuration will be used for desktop and mobile devices. If it is used, it allows one to set a special configuration only for mobile (all the previous options will be available)
