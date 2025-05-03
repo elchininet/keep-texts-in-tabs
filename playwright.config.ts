@@ -34,6 +34,8 @@ export default defineConfig({
     trace: 'on-first-retry',
     screenshot: 'only-on-failure'
   },
+  // Update snapshots
+  // updateSnapshots: 'all',
   expect: {
     timeout: 15000,
     toHaveScreenshot: {

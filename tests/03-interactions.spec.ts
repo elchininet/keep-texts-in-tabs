@@ -45,44 +45,57 @@ test('Moving a view', async ({ page }) => {
 
 });
 
-test('Adding a new view', async ({ page }) => {
+test('@testing Adding a new view', async ({ page }) => {
 
-    await page.locator('#add-view').click();
-    await expect(page.locator(DIALOG_HEADER)).toBeVisible();
-    await page.locator('input[name="title"]').fill('Account');
-    await page.locator('ha-selector-icon').click();
-    await expect(page.locator('vaadin-combo-box-overlay')).toBeVisible();
-    await page.locator('vaadin-combo-box-item').first().click();
-    // mwc-button in HA in 2024.10.x / ha-button in HA 2024.11+
-    await page.locator('ha-dialog > :is(mwc-button, ha-button)').click();
-    await expect(page.locator(DIALOG_HEADER)).not.toBeVisible();
-    await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot('03-storage-mode-view-added.png');
-    await page.locator(EXIT_EDIT_MODE).click();
-    await expect(page.locator(HEADER_SELECTOR)).toBeVisible();
-    await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot('04-tabs-content-after-view-added.png');
+    const addView = page.locator('#add-view');
+    const dialogHeader = page.locator(DIALOG_HEADER);
+    const nameInput = page.locator('input[name="title"]');
+    const iconSelector = page.locator('ha-selector-icon');
+    const comboBoxOverlay = page.locator('vaadin-combo-box-overlay');
+    const comboBoxItem = page.locator('vaadin-combo-box-item');
+    const saveButton = page.locator('ha-dialog > ha-button');
+    const tabsContainer = page.locator(TABS_CONTENT_SELECTOR);
+    const exitEditMode = page.locator(EXIT_EDIT_MODE);
+    const headerTabs = page.locator(HEADER_SELECTOR);
 
-    await page.locator(BUTTON_MENU).click();
-    await page.getByRole('menuitem', { name: 'Edit dashboard' }).click();
-    await expect(page.locator(EXIT_EDIT_MODE)).toBeVisible();
-    await page.locator('ha-svg-icon.edit-icon.view:visible').click();
-    await expect(page.locator(DIALOG_HEADER)).toBeVisible();
-    await page.locator('vaadin-combo-box-light > ha-svg-icon.clear-button').click();
-    // mwc-button in HA in 2024.10.x / ha-button in HA 2024.11+
-    await page.locator('ha-dialog > :is(mwc-button, ha-button)').last().click();
-    await expect(page.locator(DIALOG_HEADER)).not.toBeVisible();
-    await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot('05-tabs-content-after-icon-removed.png');
+    const buttonMenu = page.locator(BUTTON_MENU);
+    const editDashboard = page.getByRole('menuitem', { name: 'Edit dashboard' });
+    const editButton = page.locator('ha-icon-button.edit-icon.view:visible');
+    const clearIconButton = page.locator('vaadin-combo-box-light > ha-svg-icon.clear-button');
 
-    await page.locator('ha-svg-icon.edit-icon.view:visible').click();
-    await expect(page.locator(DIALOG_HEADER)).toBeVisible();
-    await page.locator('ha-selector-icon').click();
-    await expect(page.locator('vaadin-combo-box-overlay')).toBeVisible();
-    await page.locator('vaadin-combo-box-item').first().click();
-    // mwc-button in HA in 2024.10.x / ha-button in HA 2024.11+
-    await page.locator('ha-dialog > :is(mwc-button, ha-button)').last().click();
-    await expect(page.locator(DIALOG_HEADER)).not.toBeVisible();
-    await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot('03-storage-mode-view-added.png');
-    await page.locator(EXIT_EDIT_MODE).click();
-    await expect(page.locator(HEADER_SELECTOR)).toBeVisible();
-    await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot('04-tabs-content-after-view-added.png');
+    await addView.click();
+    await expect(dialogHeader).toBeVisible();
+    await nameInput.fill('Account');
+    await iconSelector.click();
+    await expect(comboBoxOverlay).toBeVisible();
+    await comboBoxItem.first().click();
+    await saveButton.click();
+    await expect(dialogHeader).not.toBeVisible();
+    await expect(tabsContainer).toHaveScreenshot('03-storage-mode-view-added.png');
+    await exitEditMode.click();
+    await expect(headerTabs).toBeVisible();
+    await expect(tabsContainer).toHaveScreenshot('04-tabs-content-after-view-added.png');
+
+    await buttonMenu.click();
+    await editDashboard.click();
+    await expect(exitEditMode).toBeVisible();
+    await editButton.click();
+    await expect(dialogHeader).toBeVisible();
+    await clearIconButton.click();
+    await saveButton.last().click();
+    await expect(dialogHeader).not.toBeVisible();
+    await expect(tabsContainer).toHaveScreenshot('05-tabs-content-after-icon-removed.png');
+
+    await editButton.click();
+    await expect(dialogHeader).toBeVisible();
+    await iconSelector.click();
+    await expect(comboBoxOverlay).toBeVisible();
+    await comboBoxItem.first().click();
+    await saveButton.last().click();
+    await expect(dialogHeader).not.toBeVisible();
+    await expect(tabsContainer).toHaveScreenshot('03-storage-mode-view-added.png');
+    await exitEditMode.click();
+    await expect(headerTabs).toBeVisible();
+    await expect(tabsContainer).toHaveScreenshot('04-tabs-content-after-view-added.png');
 
 });
