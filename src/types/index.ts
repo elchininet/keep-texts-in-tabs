@@ -38,7 +38,3 @@ export interface Tab {
     icon: HTMLElement | null;
     position: Position;
 }
-
-export interface TabContainer extends HTMLElement {
-    _boundNotifyResize: () => void;
-}
