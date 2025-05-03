@@ -3,7 +3,6 @@ import { HomeAssistantStylesManager } from 'home-assistant-styles-manager';
 import {
     Lovelace,
     KeepTextsInTabsConfig,
-    TabContainer,
     Tab,
     Position
 } from '@types';
@@ -105,8 +104,8 @@ class KeepTextsInTabs {
 
         const editMode = !!this.huiRoot.querySelector(`:host > div.edit-mode`);
         const tabsContainer = editMode
-            ? this.huiRoot.querySelector<TabContainer>(ELEMENT.SL_TAB_GROUP)
-            : this.appToolbar.querySelector<TabContainer>(ELEMENT.SL_TAB_GROUP);
+            ? this.huiRoot.querySelector(ELEMENT.SL_TAB_GROUP)
+            : this.appToolbar.querySelector(ELEMENT.SL_TAB_GROUP);
         const tabs: HTMLElement[] = tabsContainer
             ? Array.from(
                 tabsContainer.querySelectorAll<HTMLElement>(ELEMENT.SL_TAB)
@@ -192,9 +191,6 @@ class KeepTextsInTabs {
                 subtree: true
             });
 
-        }
-        if (typeof tabsContainer._boundNotifyResize === 'function') {
-            tabsContainer._boundNotifyResize();
         }
     }
 
