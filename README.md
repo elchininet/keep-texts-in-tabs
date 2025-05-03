@@ -30,10 +30,17 @@ You need to install the plugin through [HACS] or manually, not both. If you inst
 
 ### Through HACS
 
+#### Go to the HACS plugin's page
+
+If you have not disabled the [My Home Assistant] integration, just click on [this link](https://my.home-assistant.io/redirect/hacs_repository/?owner=elchininet&repository=keep-texts-in-tabs&category=plugin) to go to the plugin's page, otherwise follow the next steps:
+
 1. Go to `HACS` dashboard
 2. Search for `keep-texts-in-tabs` and click on it
-7. On the plugin page, click on the `Download` yellow button in the bottom-right corner
-8. Click on `Download` in the more-info dialog
+
+#### Install the plugin
+
+1. On the plugin page, click on the `Download` yellow button in the bottom-right corner
+2. Click on `Download` in the more-info dialog
 
 #### If you are in storage mode (default mode)
 
@@ -47,10 +54,8 @@ That‘s it, you have properly installed the plugin
 ```yaml
 frontend:
   extra_module_url:
-    - /hacsfiles/keep-texts-in-tabs/keep-texts-in-tabs.js?v=1.0.0
+    - /hacsfiles/keep-texts-in-tabs/keep-texts-in-tabs.js
 ```
-
-3. Make sure you add the correct version at the end of the URL (e.g. `?v=1.0.0`) because in this way you make Home Assistant to load the new version on each update instead of a version stored in cache
 
 ### Manual installation
 
@@ -246,6 +251,7 @@ keep_texts_in_tabs:
 ```
 
 [Home Assistant]: https://www.home-assistant.io/
+[My Home Assistant]: https://www.home-assistant.io/integrations/my/
 [custom-header]: https://github.com/maykar/custom-header
 [views]: https://www.home-assistant.io/dashboards/views
 [HACS]: https://hacs.xyz
