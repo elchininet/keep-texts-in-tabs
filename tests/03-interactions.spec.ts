@@ -45,7 +45,7 @@ test('Moving a view', async ({ page }) => {
 
 });
 
-test('@testing Adding a new view', async ({ page }) => {
+test('Adding a new view', async ({ page }) => {
 
     const addView = page.locator('#add-view');
     const dialogHeader = page.locator(DIALOG_HEADER);
