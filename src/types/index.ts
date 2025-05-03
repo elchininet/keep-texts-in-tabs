@@ -3,9 +3,16 @@ export enum Position {
     BEFORE = 'before'
 }
 
+export enum TextTransform {
+    CAPITALIZE = 'capitalize',
+    UPPERCASE = 'uppercase',
+    LOWERCASE = 'lowercase'
+}
+
 export interface Config {
     enabled: boolean;
     position?: Position;
+    text_transform?: `${TextTransform}`;
     include?: string[];
     exclude?: string[];
     override?: string[];

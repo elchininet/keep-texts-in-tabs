@@ -39,6 +39,18 @@ lovelace:
       mode: yaml
       title: Override after
       filename: ui-lovelace-override-after.yaml
+    lovelace-text-transform-capitalize:
+      mode: yaml
+      title: Text Transform Capitalize
+      filename: ui-lovelace-text-transform-capitalize.yaml
+    lovelace-text-transform-lowercase:
+      mode: yaml
+      title: Text Transform Lowercase
+      filename: ui-lovelace-text-transform-lowercase.yaml
+    lovelace-text-transform-uppercase:
+      mode: yaml
+      title: Text Transform Uppercase
+      filename: ui-lovelace-text-transform-uppercase.yaml
     lovelace-no-config:
       mode: yaml
       title: No Config

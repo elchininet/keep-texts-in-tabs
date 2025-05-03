@@ -1,11 +1,19 @@
-import { Position } from '@types';
+import { Position, TextTransform } from '@types';
 import { NAMESPACE } from '@constants';
 import { version } from '../../package.json';
 
-export const getSpan = (text: string, position: Position): HTMLSpanElement => {
+export const getSpan = (
+    text: string,
+    position: Position,
+    textTransform: `${TextTransform}` = TextTransform.CAPITALIZE
+): HTMLSpanElement => {
     const textNode = document.createTextNode(text);
     const span = document.createElement('span');
-    span.classList.add(NAMESPACE, `${NAMESPACE}-${position}`);
+    span.classList.add(
+        NAMESPACE,
+        `${NAMESPACE}-${position}`,
+        `${NAMESPACE}-${textTransform}`
+    );
     span.appendChild(textNode);
     return span;
 };
