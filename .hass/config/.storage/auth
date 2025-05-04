@@ -725,21 +725,21 @@
         "version": "2023.11.1"
       },
       {
-        "id": "cc1fec9738664e618438d9008cf6af5e",
+        "id": "8e7ddd2425ac44a4b635fb347f065097",
         "user_id": "ec313e3c38fb4d60b44e0db03cdc1250",
         "client_id": "http://localhost:8123/",
         "client_name": null,
         "client_icon": null,
         "token_type": "normal",
-        "created_at": "2024-09-10T17:37:09.858117+00:00",
+        "created_at": "2025-05-04T20:36:36.284691+00:00",
         "access_token_expiration": 1800.0,
-        "token": "e4b02b671d2ec12b358bc00de0512b0cecd96fe62e7a9396ad1b2223f0edcfdad53ac5942a9725cd24286640561fcebb76e4c53d17c89261899bf353c309bf34",
-        "jwt_key": "5a18e04a025fb9df6a5aeb8b199e5422c0d149082feb70c7037ad87faf5eb1911ccc5773b9456b82ae86893ab2fc24ff70c622c66e8312fbbf3ec57502f6f830",
-        "last_used_at": "2024-09-10T17:37:09.858297+00:00",
+        "token": "3462df9fba8fd1da6f5b21cc1284038f86e1295e374d5fa28883bdf900954f44086509811e260e78d9549c0bfe98362eca721a9aef2ea24612b71a7f529d7061",
+        "jwt_key": "d1b07a9b49d6dd8473674cc61f83f552519bd4a583071e752d09af93b000f9c4eab1f487da6c00e9819c0180f315913d9d377667ede2214e6092e5af648c3828",
+        "last_used_at": "2025-05-04T20:36:36.285061+00:00",
         "last_used_ip": "172.17.0.1",
-        "expire_at": 1733765829.858297,
+        "expire_at": 1754166996.285061,
         "credential_id": "0ef96d1a528f4af5ad82b425af19836b",
-        "version": "2024.9.1"
+        "version": "2025.5.0b3"
       },
       {
         "id": "218a4da6a0e143deb3e1bba7c5f77765",
