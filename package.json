@@ -1,6 +1,6 @@
 {
   "name": "keep-texts-in-tabs",
-  "version": "1.3.0",
+  "version": "2.0.0",
   "description": "Keep texts in Home Assistant dashboards tabs when icons are added to them",
   "main": "keep-texts-in-tabs.js",
   "repository": "git@github.com:elchininet/keep-texts-in-tabs.git",
