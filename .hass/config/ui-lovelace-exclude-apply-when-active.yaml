@@ -1,0 +1,8 @@
+keep_texts_in_tabs:
+  enabled: true
+  exclude:
+    - Windy
+    - Planten
+  apply_when: active
+title: Exclude with Apply With active
+views: !include views.yaml

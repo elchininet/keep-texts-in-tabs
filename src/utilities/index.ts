@@ -1,10 +1,15 @@
-import { Position, TextTransform } from '@types';
+import {
+    ApplyWhen,
+    Position,
+    TextTransform
+} from '@types';
 import { NAMESPACE } from '@constants';
 import { version } from '../../package.json';
 
 export const getSpan = (
     text: string,
     position: Position,
+    applyWhen: ApplyWhen,
     textTransform: `${TextTransform}` = TextTransform.CAPITALIZE
 ): HTMLSpanElement => {
     const textNode = document.createTextNode(text);
@@ -12,7 +17,8 @@ export const getSpan = (
     span.classList.add(
         NAMESPACE,
         `${NAMESPACE}-${position}`,
-        `${NAMESPACE}-${textTransform}`
+        `${NAMESPACE}-${textTransform}`,
+        `${NAMESPACE}-${applyWhen}`
     );
     span.appendChild(textNode);
     return span;

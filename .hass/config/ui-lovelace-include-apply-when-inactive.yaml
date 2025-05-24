@@ -1,0 +1,8 @@
+keep_texts_in_tabs:
+  enabled: true
+  include:
+    - Muziek
+    - Alarmen
+  apply_when: inactive
+title: Include with Apply When inactive
+views: !include views.yaml
