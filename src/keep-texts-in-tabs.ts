@@ -1,18 +1,19 @@
 import { HAQuerySelector, HAQuerySelectorEvent } from 'home-assistant-query-selector';
 import { HomeAssistantStylesManager } from 'home-assistant-styles-manager';
 import {
-    Lovelace,
+    ApplyWhen,
     KeepTextsInTabsConfig,
-    Tab,
-    Position
+    Lovelace,
+    Position,
+    Tab
 } from '@types';
 import {
-    NAMESPACE,
-    ELEMENT,
     ARIA_LABEL_ATTRIBUTE,
     DEFAULT_MOBILE_WIDTH,
-    WINDOW_RESIZE_DELAY,
-    STYLES
+    ELEMENT,
+    NAMESPACE,
+    STYLES,
+    WINDOW_RESIZE_DELAY
 } from '@constants';
 import { getSpan, logVersionToConsole } from '@utilities';
 
@@ -91,6 +92,7 @@ class KeepTextsInTabs {
 
         const {
             enabled = false,
+            apply_when = ApplyWhen.ALWAYS,
             include,
             exclude,
             position = Position.AFTER,
@@ -154,6 +156,7 @@ class KeepTextsInTabs {
             const span = getSpan(
                 tab.label,
                 tab.position,
+                apply_when,
                 text_transform
             );
             if (tab.position === Position.AFTER) {

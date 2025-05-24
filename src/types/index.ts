@@ -9,6 +9,12 @@ export enum TextTransform {
     LOWERCASE = 'lowercase'
 }
 
+export enum ApplyWhen {
+    IS_ACTIVE = 'active',
+    IS_INACTIVE = 'inactive',
+    ALWAYS = 'always'
+}
+
 export interface Config {
     enabled: boolean;
     position?: Position;
@@ -16,6 +22,7 @@ export interface Config {
     include?: string[];
     exclude?: string[];
     override?: string[];
+    apply_when?: ApplyWhen;
 }
 
 export interface KeepTextsInTabsConfig extends Config {

@@ -1,0 +1,5 @@
+keep_texts_in_tabs:
+  enabled: true
+  apply_when: always
+title: Apply When always
+views: !include views.yaml

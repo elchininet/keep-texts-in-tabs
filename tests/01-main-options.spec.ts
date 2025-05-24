@@ -1,6 +1,12 @@
 import { test, expect } from 'playwright-test-coverage';
-import { HEADER_SELECTOR, TABS_CONTENT_SELECTOR } from './constants';
+import {
+    HEADER_SELECTOR,
+    TABS_CONTENT_SELECTOR,
+    TABS
+} from './constants';
 import { getLovelaceUrl } from './utilities';
+
+const tabsEntries = Object.entries(TABS);
 
 test('Option: enabled', async ({ page }) => {
     await page.goto(
@@ -35,12 +41,79 @@ test('Option: exclude', async ({ page }) => {
     await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot('04-exclude.png');
 });
 
+tabsEntries.forEach((entry: [string, string], tabIndex: number): void => {
+
+    const [tabName, tabLocator] = entry;
+    const tabNameLowercase = tabName.toLocaleLowerCase();
+
+    ['always', 'active', 'inactive'].forEach((testCase: string, testCaseIndex: number): void => {
+
+        const testNumber = `${testCaseIndex + 5}`.padStart(2, '0');
+
+        test(`Option: apply_when ${testCase} tab ${tabNameLowercase}`, async ({ page }) => {
+
+            await page.goto(
+                getLovelaceUrl(`apply-when-${testCase}`)
+            );
+
+            await expect(page.locator(HEADER_SELECTOR)).toBeVisible();
+
+            if (tabIndex > 0) {
+
+                await page.locator(tabLocator).click();
+
+            }
+
+            await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot(`${testNumber}-apply-when-${testCase}-tab-${tabNameLowercase}.png`);
+
+        });
+
+    });
+
+    test(`Option: exclude with apply_when active tab ${tabNameLowercase}`, async ({ page }) => {
+
+        await page.goto(
+            getLovelaceUrl('exclude-with-apply-when-active')
+        );
+
+        await expect(page.locator(HEADER_SELECTOR)).toBeVisible();
+
+        if (tabIndex > 0) {
+
+            await page.locator(tabLocator).click();
+
+        }
+
+        await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot(`08-exclude-with-apply-when-active-tab-${tabNameLowercase}.png`);
+
+    });
+
+    test(`Option: include with apply_when inactive tab ${tabNameLowercase}`, async ({ page }) => {
+
+        await page.goto(
+            getLovelaceUrl('include-with-apply-when-inactive')
+        );
+
+        await expect(page.locator(HEADER_SELECTOR)).toBeVisible();
+
+        if (tabIndex > 0) {
+
+            await page.locator(tabLocator).click();
+
+        }
+
+        await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot(`09-include-with-apply-when-inactive-tab-${tabNameLowercase}.png`);
+
+    });
+
+});
+
 test('Option: override before', async ({ page }) => {
     await page.goto(
         getLovelaceUrl('override-before')
     );
     await expect(page.locator(HEADER_SELECTOR)).toBeVisible();
-    await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot('05-override-before.png');
+    await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot('10-override-before.png');
 });
 
 test('Option: override after', async ({ page }) => {
@@ -48,7 +121,7 @@ test('Option: override after', async ({ page }) => {
         getLovelaceUrl('override-after')
     );
     await expect(page.locator(HEADER_SELECTOR)).toBeVisible();
-    await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot('06-override-after.png');
+    await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot('11-override-after.png');
 });
 
 test.describe('Small viewport', () => {
@@ -60,7 +133,7 @@ test.describe('Small viewport', () => {
             getLovelaceUrl()
         );
         await expect(page.locator(HEADER_SELECTOR)).toBeVisible();
-        await expect(page.locator('.header')).toHaveScreenshot('07-mobile_config.png');
+        await expect(page.locator('.header')).toHaveScreenshot('12-mobile_config.png');
     });
 
 });

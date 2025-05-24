@@ -27,10 +27,18 @@ lovelace:
       mode: yaml
       title: Include
       filename: ui-lovelace-include.yaml
+    lovelace-include-with-apply-when-inactive:
+      mode: yaml
+      title: Include with Apply When inactive
+      filename: ui-lovelace-include-apply-when-inactive.yaml
     lovelace-exclude:
       mode: yaml
       title: Exclude
       filename: ui-lovelace-exclude.yaml
+    lovelace-exclude-with-apply-when-active:
+      mode: yaml
+      title: Exclude with Apply When active
+      filename: ui-lovelace-exclude-apply-when-active.yaml
     lovelace-override-before:
       mode: yaml
       title: Override before
@@ -51,6 +59,18 @@ lovelace:
       mode: yaml
       title: Text Transform Uppercase
       filename: ui-lovelace-text-transform-uppercase.yaml
+    lovelace-apply-when-always:
+      mode: yaml
+      title: Apply When always
+      filename: ui-lovelace-apply-when-always.yaml
+    lovelace-apply-when-active:
+      mode: yaml
+      title: Apply When active
+      filename: ui-lovelace-apply-when-active.yaml
+    lovelace-apply-when-inactive:
+      mode: yaml
+      title: Apply When inactive
+      filename: ui-lovelace-apply-when-inactive.yaml
     lovelace-no-config:
       mode: yaml
       title: No Config

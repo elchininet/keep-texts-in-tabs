@@ -1,0 +1,5 @@
+keep_texts_in_tabs:
+  enabled: true
+  apply_when: active
+title: Apply When active
+views: !include views.yaml

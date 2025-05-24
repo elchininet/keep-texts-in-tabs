@@ -198,6 +198,43 @@ keep_texts_in_tabs:
 
 ![image](images/options/override.png)
 
+---
+
+### apply_when
+
+Specifies in which case the texts should be shown depending on the tabs status. It allows three values, `always` (default) to show the text independently of the tab being active or not; `active` to show the text only on the active tab; or `inactive` to show the text only in the inactive tabs. 
+
+> [!NOTE]
+> This option will be affected by the `include` and `exclude` options. For example, if you specify `include` only with one tab and set the option `apply_when` with value `active`, the text will be shown only in that specified tab when it is active.
+
+#### Examples
+
+```yaml
+keep_texts_in_tabs:
+  enabled: true
+  apply_when: always ## default value
+```
+
+![image](images/options/apply_when_always.png)
+
+```yaml
+keep_texts_in_tabs:
+  enabled: true
+  apply_when: active
+```
+
+![image](images/options/apply_when_active.png)
+
+```yaml
+keep_texts_in_tabs:
+  enabled: true
+  apply_when: inactive
+```
+
+![image](images/options/apply_when_inactive.png)
+
+---
+
 ### text_transform
 
 Set the text transformation. Allowed values are `capitalize` (which is the default value and sets the first character in capital letter), `uppercase` (which converts the whole text to uppercase) and `lowercase` (which converts the whole text to lowercase).
