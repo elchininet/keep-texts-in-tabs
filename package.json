@@ -37,7 +37,7 @@
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-terser": "^0.4.4",
     "@stylistic/eslint-plugin-js": "^4.4.0",
-    "@types/node": "^22.15.21",
+    "@types/node": "^22.15.29",
     "eslint": "^9.27.0",
     "globals": "^16.1.0",
     "nyc": "^17.1.0",
