@@ -5,7 +5,7 @@ import {
     BASE_PAGE
 } from './constants';
 
-const BUTTON_MENU = '.action-items > ha-button-menu';
+const BUTTON_MENU = '.action-items > ha-button-menu:last-of-type';
 const EXIT_EDIT_MODE_OLD = 'mwc-button.exit-edit-mode'; // Home Assistant < 2025.8.1
 const EXIT_EDIT_MODE = 'ha-button.exit-edit-mode';
 const DIALOG_HEADER = 'ha-dialog-header';
