@@ -11,14 +11,14 @@ export const WINDOW_RESIZE_DELAY = 100;
 
 export enum ELEMENT {
     TOOLBAR = '.toolbar',
-    SL_TAB_GROUP = 'sl-tab-group',
-    SL_TAB = 'sl-tab',
+    HA_TAB_GROUP = 'ha-tab-group',
+    HA_TAB_GROUP_TAB = 'ha-tab-group-tab',
     HUI_VIEW = 'hui-view',
     HA_ICON = 'ha-icon',
     SPAN = 'span'
 }
 
-const NAMESPACED_SPAN = `${ELEMENT.SL_TAB} ${ELEMENT.SPAN}.${NAMESPACE}`;
+const NAMESPACED_SPAN = `${ELEMENT.HA_TAB_GROUP_TAB} ${ELEMENT.SPAN}.${NAMESPACE}`;
 const TAB_SELECTED = '[aria-selected="true"]';
 
 export const STYLES = {
@@ -43,10 +43,10 @@ export const STYLES = {
     [`${NAMESPACED_SPAN}-${ApplyWhen.ALWAYS}`]: {
         display: 'inline-block'
     },
-    [`${ELEMENT.SL_TAB}${TAB_SELECTED} ${ELEMENT.SPAN}.${NAMESPACE}-${ApplyWhen.IS_ACTIVE}`]: {
+    [`${ELEMENT.HA_TAB_GROUP_TAB}${TAB_SELECTED} ${ELEMENT.SPAN}.${NAMESPACE}-${ApplyWhen.IS_ACTIVE}`]: {
         display: 'inline-block'
     },
-    [`${ELEMENT.SL_TAB}:not(${TAB_SELECTED}) ${ELEMENT.SPAN}.${NAMESPACE}-${ApplyWhen.IS_INACTIVE}`]: {
+    [`${ELEMENT.HA_TAB_GROUP_TAB}:not(${TAB_SELECTED}) ${ELEMENT.SPAN}.${NAMESPACE}-${ApplyWhen.IS_INACTIVE}`]: {
         display: 'inline-block'
     }
 };
