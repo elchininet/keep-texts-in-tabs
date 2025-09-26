@@ -106,11 +106,11 @@ class KeepTextsInTabs {
 
         const editMode = !!this.huiRoot.querySelector(`:host > div.edit-mode`);
         const tabsContainer = editMode
-            ? this.huiRoot.querySelector(ELEMENT.SL_TAB_GROUP)
-            : this.appToolbar.querySelector(ELEMENT.SL_TAB_GROUP);
+            ? this.huiRoot.querySelector(ELEMENT.HA_TAB_GROUP)
+            : this.appToolbar.querySelector(ELEMENT.HA_TAB_GROUP);
         const tabs: HTMLElement[] = tabsContainer
             ? Array.from(
-                tabsContainer.querySelectorAll<HTMLElement>(ELEMENT.SL_TAB)
+                tabsContainer.querySelectorAll<HTMLElement>(ELEMENT.HA_TAB_GROUP_TAB)
             )
             : [];
 
@@ -178,7 +178,7 @@ class KeepTextsInTabs {
                         if (
                             node.nodeType === Node.ELEMENT_NODE &&
                             (
-                                node.nodeName === ELEMENT.SL_TAB.toUpperCase() ||
+                                node.nodeName === ELEMENT.HA_TAB_GROUP_TAB.toUpperCase() ||
                                 node.nodeName === ELEMENT.HA_ICON.toUpperCase()
                             )
                         ) {
@@ -188,7 +188,7 @@ class KeepTextsInTabs {
                     }
                 }
             });
-            this.tabsEditionResolver.observe(this.huiRoot.querySelector<HTMLElement>(ELEMENT.SL_TAB_GROUP), {
+            this.tabsEditionResolver.observe(this.huiRoot.querySelector<HTMLElement>(ELEMENT.HA_TAB_GROUP), {
                 attributeFilter: [ARIA_LABEL_ATTRIBUTE],
                 childList: true,
                 subtree: true
