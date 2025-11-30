@@ -32,7 +32,7 @@
     "postversion": "git push && git push --tags"
   },
   "devDependencies": {
-    "@playwright/test": "1.56.1",
+    "@playwright/test": "1.57.0",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-terser": "^0.4.4",
@@ -47,7 +47,7 @@
     "rollup-plugin-ts": "^3.4.5",
     "tslib": "^2.8.1",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.47.0"
+    "typescript-eslint": "^8.48.0"
   },
   "dependencies": {
     "home-assistant-query-selector": "^4.3.0",
