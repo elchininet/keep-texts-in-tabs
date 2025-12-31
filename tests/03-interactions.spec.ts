@@ -51,8 +51,13 @@ test('Adding a new view', async ({ page }) => {
     const dialogHeader = page.locator(DIALOG_HEADER);
     const nameInput = page.locator('input[name="title"]');
     const iconSelector = page.locator('ha-selector-icon');
-    const comboBoxOverlay = page.locator('vaadin-combo-box-overlay');
-    const comboBoxItem = page.locator('vaadin-combo-box-item');
+    const comboBoxOverlay = page.locator('ha-picker-combo-box')
+        // Remove when Home Assistant 2026.1.x is released
+        .or(page.locator('vaadin-combo-box-overlay'))
+        .first();
+    const comboBoxItem = page.locator('ha-picker-combo-box ha-combo-box-item')
+        // Remove when Home Assistant 2026.1.x is released
+        .or(page.locator('vaadin-combo-box-item'));
     const saveButton = page.locator('ha-dialog > ha-button');
     const tabsContainer = page.locator(TABS_CONTENT_SELECTOR);
     const exitEditMode = page.locator(EXIT_EDIT_MODE);
@@ -61,7 +66,10 @@ test('Adding a new view', async ({ page }) => {
     const buttonMenu = page.locator(BUTTON_MENU);
     const editDashboard = page.getByRole('menuitem', { name: 'Edit dashboard' });
     const editButton = page.locator('ha-icon-button.edit-icon.view:visible');
-    const clearIconButton = page.locator('vaadin-combo-box-light > ha-svg-icon.clear-button');
+    const clearIconButton = page.locator('ha-picker-field ha-combo-box-item > ha-icon-button.clear')
+        // Remove when Home Assistant 2026.1.x is released
+        .or(page.locator('vaadin-combo-box-light > ha-svg-icon.clear-button'))
+        .first();
 
     await addView.click();
     await expect(dialogHeader).toBeVisible();
