@@ -1,6 +1,6 @@
 import { test, expect } from 'playwright-test-coverage';
 import { HEADER_SELECTOR, TABS_CONTENT_SELECTOR } from './constants';
-import { getLovelaceUrl } from './utilities';
+import { getLovelaceUrl, waithForError } from './utilities';
 
 test('No config', async ({ page }) => {
     await page.goto(
@@ -46,11 +46,8 @@ test('Should be the same after a window resize', async ({ page }) => {
 });
 
 test('Config with error', async ({ page }) => {
-    page.on('pageerror', error => {
-        expect(error.message).toBe('keep-texts-in-tabs: Configuration cannot have "include" and "exclude" properties at the same time');
-    });
     await page.goto(
         getLovelaceUrl('config-with-error')
     );
-    await expect(page.locator(HEADER_SELECTOR)).toBeVisible();
+    await waithForError(page, 'keep-texts-in-tabs: Configuration cannot have "include" and "exclude" properties at the same time');
 });
