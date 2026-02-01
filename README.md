@@ -17,7 +17,7 @@ In [Home Assistant] it is possible to create different [views] in a dashboard, e
 
 ![image](images/header-texts.png)
 
-It is possible also, to add an icon to a view, and in that case, [the icon will be shown instead of the text](https://www.home-assistant.io/dashboards/views#view-icon) and the text will be used as the title of the icon.
+It is also possible, to add an icon to a view, and in that case, [the icon will be shown instead of the text](https://www.home-assistant.io/dashboards/views#view-icon) and the text will be used as the title of the icon.
 
 ![image](images/header-icons.png)
 
@@ -25,7 +25,8 @@ However, it is not possible to have both, icons and texts, –something that it 
 
 ![image](images/header-texts-and-icons.png)
 
->This feature was available before in [custom-header], this plugin is not aimed to replace `custom-header`, but to bring only the functionality of showing texts in views with icons, and no more.
+> [!NOTE]
+> This feature was available before in [custom-header], this plugin is not aimed to replace `custom-header`, but to bring only the functionality of showing texts in views with icons, and no more.
 
 ## Installation
 
@@ -180,7 +181,8 @@ keep_texts_in_tabs:
 
 ![image](images/options/exclude.png)
 
->Note: you cannot have `include` and `exclude` parameters at the same time in a configuration, if you do that, you will get an error.
+> [!WARNING]
+> You cannot have `include` and `exclude` parameters at the same time in a configuration, if you do that, you will get an error.
 
 ---
 
