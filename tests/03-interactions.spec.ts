@@ -5,7 +5,8 @@ import {
     BASE_PAGE
 } from './constants';
 
-const BUTTON_MENU = '.action-items > ha-dropdown:last-of-type > ha-icon-button';
+const EDIT_DASHBOARD_MENU = '.action-items > ha-icon-button:last-of-type';
+const OVERFLOW_MENU_ITEM = '.action-items > ha-dropdown > ha-icon-button';
 const EXIT_EDIT_MODE = 'ha-button.exit-edit-mode';
 const DIALOG_HEADER = 'ha-dialog-header';
 
@@ -16,8 +17,7 @@ test.beforeEach(async ({ page }) => {
     );
 
     await expect(page.locator(HEADER_SELECTOR)).toBeVisible();
-    await page.locator(BUTTON_MENU).click();
-    await page.getByRole('menuitem', { name: 'Edit dashboard' }).click();
+    await page.locator(EDIT_DASHBOARD_MENU).click();
     await expect(page.locator(EXIT_EDIT_MODE)).toBeVisible();
 
 });
@@ -25,7 +25,7 @@ test.beforeEach(async ({ page }) => {
 test('Edit a storage mode dashboard', async ({ page }) => {
 
     await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot('01-storage-mode-edit-view.png');
-    await page.locator(BUTTON_MENU).click();
+    await page.locator(OVERFLOW_MENU_ITEM).click();
     await page.getByRole('menuitem', { name: 'Raw configuration editor' }).click();
     await expect(page.locator('hui-editor')).toBeVisible();
     await page.locator('ha-top-app-bar-fixed > ha-icon-button').click();
@@ -58,8 +58,7 @@ test('Adding a new view', async ({ page }) => {
     const exitEditMode = page.locator(EXIT_EDIT_MODE);
     const headerTabs = page.locator(HEADER_SELECTOR);
 
-    const buttonMenu = page.locator(BUTTON_MENU);
-    const editDashboard = page.getByRole('menuitem', { name: 'Edit dashboard' });
+    const buttonMenu = page.locator(EDIT_DASHBOARD_MENU);
     const editButton = page.locator('ha-icon-button.edit-icon.view:visible');
     const clearIconButton = page.locator('ha-picker-field ha-combo-box-item > ha-icon-button.clear');
 
@@ -77,7 +76,6 @@ test('Adding a new view', async ({ page }) => {
     await expect(tabsContainer).toHaveScreenshot('04-tabs-content-after-view-added.png');
 
     await buttonMenu.click();
-    await editDashboard.click();
     await expect(exitEditMode).toBeVisible();
     await editButton.click();
     await expect(dialogHeader).toBeVisible();
