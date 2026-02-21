@@ -25,7 +25,6 @@
     "start:playwright": "docker run -e CI=true --rm --network host --add-host host.docker.internal:host-gateway -v $(pwd):/$(pwd)/ -w $(pwd) -i mcr.microsoft.com/playwright:v$(jq -r '.devDependencies[\"@playwright/test\"]' package.json)-jammy sh -c \"yarn test:run && exit\"",
     "tag:playwright": "docker run --rm --network host --add-host host.docker.internal:host-gateway -v $(pwd):/$(pwd)/ -w $(pwd) -i mcr.microsoft.com/playwright:v$(jq -r '.devDependencies[\"@playwright/test\"]' package.json)-jammy sh -c \"npx playwright test --grep @testing --trace on\"",
     "coverage:report": "nyc report --reporter=lcov --reporter=text-summary",
-    "preinstall": "npx -y only-allow pnpm",
     "prepare": "pnpm build",
     "prepublishOnly": "pnpm test:all",
     "version": "git add .",
@@ -51,7 +50,7 @@
     "typescript-eslint": "^8.55.0"
   },
   "dependencies": {
-    "home-assistant-query-selector": "^4.3.0",
+    "home-assistant-query-selector": "5.0.0-alpha",
     "home-assistant-styles-manager": "^3.1.0"
   },
   "pnpm": {
