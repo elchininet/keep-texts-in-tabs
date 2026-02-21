@@ -8,7 +8,7 @@ import {
 const EDIT_DASHBOARD_MENU = '.action-items > ha-icon-button:last-of-type';
 const OVERFLOW_MENU_ITEM = '.action-items > ha-dropdown > ha-icon-button';
 const EXIT_EDIT_MODE = 'ha-button.exit-edit-mode';
-const DIALOG_HEADER = 'ha-dialog-header';
+const DIALOG_HEADER = 'ha-dialog-header[slot="header"]';
 
 test.beforeEach(async ({ page }) => {
 
@@ -53,7 +53,7 @@ test('Adding a new view', async ({ page }) => {
     const iconSelector = page.locator('ha-selector-icon');
     const comboBoxOverlay = page.locator('ha-picker-combo-box');
     const comboBoxItem = page.locator('ha-picker-combo-box ha-combo-box-item');
-    const saveButton = page.locator('ha-dialog > ha-button');
+    const saveButton = page.locator('ha-dialog > ha-dialog-footer > ha-button');
     const tabsContainer = page.locator(TABS_CONTENT_SELECTOR);
     const exitEditMode = page.locator(EXIT_EDIT_MODE);
     const headerTabs = page.locator(HEADER_SELECTOR);
