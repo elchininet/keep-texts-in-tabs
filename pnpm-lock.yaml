@@ -12,8 +12,8 @@ importers:
   .:
     dependencies:
       home-assistant-query-selector:
-        specifier: 5.0.0-alpha
-        version: 5.0.0-alpha
+        specifier: 5.0.0
+        version: 5.0.0
       home-assistant-styles-manager:
         specifier: ^3.1.0
         version: 3.1.0
@@ -999,8 +999,8 @@ packages:
     resolution: {integrity: sha512-J00e55zffgi3yVnUp0UdbMztNkr2PnizEkOe9URNohnrNhW5X0QpegkuLpOmFQInpi93Nb8MCjQRHAiCDF42NQ==}
     engines: {node: '>=10.0.0'}
 
-  home-assistant-query-selector@5.0.0-alpha:
-    resolution: {integrity: sha512-cTDy8ngrk1hR5Da9oKSpGqPNPoNe5p2Ltp1STOXc0NL6bqXpqrjdaAwtgLS+yMnI/JT/dDof+wXze68r5HfaqQ==}
+  home-assistant-query-selector@5.0.0:
+    resolution: {integrity: sha512-QY1tR1FNIDbHocw5GNuPfZzIXg/7x8lLt58fNGMNvZgCHCjasFsQ6vk93/Fq+8kBO+J/jc8YrziFVknTfvjwCw==}
 
   home-assistant-styles-manager@3.1.0:
     resolution: {integrity: sha512-ui8JNAZUovDPBYODGNZgj7hjCKy2PlUYkW4MQJ0yTttbshfa4cAaNA536e4QQ3twEogpVp1TSD7Y4GZ5uBVwhQ==}
@@ -2487,7 +2487,7 @@ snapshots:
 
   helpertypes@0.0.19: {}
 
-  home-assistant-query-selector@5.0.0-alpha:
+  home-assistant-query-selector@5.0.0:
     dependencies:
       shadow-dom-selector: 5.0.1
 
