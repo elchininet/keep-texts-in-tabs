@@ -11,8 +11,8 @@
 [![Home Assistant Nightly Beta Tests](https://github.com/elchininet/keep-texts-in-tabs/actions/workflows/ha-beta-tests.yaml/badge.svg)](https://github.com/elchininet/keep-texts-in-tabs/actions/workflows/ha-beta-tests.yaml)
 
 > [!IMPORTANT]  
-> If you have `Home Assistant` `2025.10.0` or greater installed, the minimum compatible version that you can install is `Keep Texts in Tabs Mode` `v3.0.0`. If you are in a lower version of `Home Assistant`, the latest compatible version that you can install is `v2.1.0`.
-> If you have `Home Assistant` `2026.3.0` or greater installed, the minimum compatible version that you can install is `Keep Texts in Tabs Mode` `v4.0.0`. If you are between `Home Assistant` `2025.10.0` and `2026.2.3`, the latest compatible version that you can install is `v3.0.0`.
+> 1. If you have `Home Assistant` `2025.10.0` or greater installed, the minimum compatible version that you can install is `Keep Texts in Tabs Mode` `v3.0.0`. If you are in a lower version of `Home Assistant`, the latest compatible version that you can install is `v2.1.0`.
+> 2. If you have `Home Assistant` `2026.3.0` or greater installed, the minimum compatible version that you can install is `Keep Texts in Tabs Mode` `v4.0.0`. If you are between `Home Assistant` `2025.10.0` and `2026.2.3`, the latest compatible version that you can install is `v3.0.0`.
 
 In [Home Assistant] it is possible to create different [views] in a dashboard, each view will be accesible with a tab.
 
