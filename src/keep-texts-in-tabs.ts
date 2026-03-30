@@ -33,8 +33,8 @@ class KeepTextsInTabs {
             } = event.detail;
 
             this.lovelace = await HA_PANEL_LOVELACE.element as Lovelace;
-            this.huiRoot = await HUI_ROOT.selector.$.element;
-            this.appToolbar = await HEADER.selector.query(ELEMENT.TOOLBAR).element;
+            this.huiRoot = await HUI_ROOT.selector.$.element as ShadowRoot;
+            this.appToolbar = await HEADER.selector.query(ELEMENT.TOOLBAR).element as Element;
             this.run();
         });
         selector.listen();
@@ -42,16 +42,16 @@ class KeepTextsInTabs {
         window.addEventListener('resize', this.resizeWindowBinded);
     }
 
-    private styleManager: HomeAssistantStylesManager;
-    private lovelace: Lovelace;
-    private huiRoot: ShadowRoot;
-    private appToolbar: Element;
+    private styleManager!: HomeAssistantStylesManager;
+    private lovelace!: Lovelace;
+    private huiRoot!: ShadowRoot;
+    private appToolbar!: Element;
 
-    private toolBarObserver: MutationObserver;
-    private tabsEditionResolver: MutationObserver;
+    private toolBarObserver!: MutationObserver;
+    private tabsEditionResolver!: MutationObserver;
 
-    private resizeDelay: number;
-    private resizeWindowBinded: () => void;
+    private resizeDelay!: number;
+    private resizeWindowBinded!: () => void;
 
     protected async run() {
         this.toolBarObserver?.disconnect();
@@ -160,9 +160,9 @@ class KeepTextsInTabs {
                 text_transform
             );
             if (tab.position === Position.AFTER) {
-                tab.element.insertBefore(span, tab.icon.nextSibling);
+                tab.element.insertBefore(span, tab.icon!.nextSibling);
             } else {
-                tab.element.insertBefore(span, tab.icon);
+                tab.element.insertBefore(span, tab.icon!);
             }
         });
 
@@ -188,7 +188,7 @@ class KeepTextsInTabs {
                     }
                 }
             });
-            this.tabsEditionResolver.observe(this.huiRoot.querySelector<HTMLElement>(ELEMENT.HA_TAB_GROUP), {
+            this.tabsEditionResolver.observe(this.huiRoot.querySelector<HTMLElement>(ELEMENT.HA_TAB_GROUP)!, {
                 attributeFilter: [ARIA_LABEL_ATTRIBUTE],
                 childList: true,
                 subtree: true

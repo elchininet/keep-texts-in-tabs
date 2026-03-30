@@ -1,4 +1,4 @@
-import ts from 'rollup-plugin-ts';
+import ts from '@rollup/plugin-typescript';
 import json from '@rollup/plugin-json';
 import terser from '@rollup/plugin-terser';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
@@ -9,9 +9,7 @@ export default [
         plugins: [
             nodeResolve(),
             json(),
-            ts({
-                browserslist: false
-            }),
+            ts(),
             terser({
                 output: {
                     comments: false
@@ -27,11 +25,12 @@ export default [
     {
         plugins: [
             nodeResolve(),
-            json({
-                preferConst: true
-            }),
+            json(),
             ts({
-                browserslist: false
+                compilerOptions: {
+                    outDir: undefined,
+                    removeComments: false
+                }
             }),
             istanbul({
                 exclude: [
