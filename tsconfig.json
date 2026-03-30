@@ -2,18 +2,20 @@
     "compilerOptions": {
       "outDir": "./dist/",
       "module": "esnext",
-      "target": "ES2015",
-      "moduleResolution": "node",
+      "target": "es6",
+      "moduleResolution": "bundler",
       "esModuleInterop": true,
       "resolveJsonModule": true,
       "declaration": false,
       "noImplicitAny": true,
       "removeComments": true,
-      "baseUrl": "./src",
+      "skipLibCheck": true,
+      "types": ["node"],
+      "rootDir": "./src",
       "paths": {
-        "@types": ["types"],
-        "@constants": ["constants"],
-        "@utilities": ["utilities"]  
+        "@types": ["./src/types"],
+        "@constants": ["./src/constants"],
+        "@utilities": ["./src/utilities"]  
       }
     },
     "include": ["src/**/*.ts", "package.json"],
