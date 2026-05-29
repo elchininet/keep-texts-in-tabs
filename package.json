@@ -53,13 +53,5 @@
   "dependencies": {
     "home-assistant-query-selector": "6.2.0",
     "home-assistant-styles-manager": "^4.1.2"
-  },
-  "pnpm": {
-    "overrides": {
-      "brace-expansion@>=4.0.0 <5.0.5": ">=5.0.5",
-      "picomatch@<2.3.2": "=2.3.2",
-      "picomatch@>=4.0.0 <4.0.4": ">=4.0.4",
-      "serialize-javascript@<7.0.5": ">=7.0.5"
-    }
   }
 }
