@@ -12,8 +12,8 @@ importers:
   .:
     dependencies:
       home-assistant-query-selector:
-        specifier: 6.2.0
-        version: 6.2.0(shadow-dom-selector@5.0.1)
+        specifier: 6.2.1
+        version: 6.2.1(shadow-dom-selector@5.0.1)
       home-assistant-styles-manager:
         specifier: ^4.1.2
         version: 4.1.2
@@ -941,10 +941,10 @@ packages:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
 
-  home-assistant-query-selector@6.2.0:
-    resolution: {integrity: sha512-BNDV9TxqTGTl+iwvsR0pUJvZF/f5LcJ9tMVzUWly0N6HGH96dR9MTv/Ty4pH5OS7Kl4SP7Hoj3pE5t9POWjwWg==}
+  home-assistant-query-selector@6.2.1:
+    resolution: {integrity: sha512-6tFuh+5zGSzg9dCTok6+vXZhWv1LtWrBCtLFWVgrk+t6/TmpFQZcrnc5p5bW9MaTnw9EfJg6wKFuxv7/Bpwsfw==}
     peerDependencies:
-      shadow-dom-selector: ^6.2.2
+      shadow-dom-selector: ^6.2.3
 
   home-assistant-styles-manager@4.1.2:
     resolution: {integrity: sha512-bjsLznCTgU9Gl5uAs8MLnNRHiPneoODyayFPTteU+l0x8rgnMwLq2hOUhIXY2Sf2EmpaXucYGOl6UiWTqSeWdw==}
@@ -2336,7 +2336,7 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
-  home-assistant-query-selector@6.2.0(shadow-dom-selector@5.0.1):
+  home-assistant-query-selector@6.2.1(shadow-dom-selector@5.0.1):
     dependencies:
       shadow-dom-selector: 5.0.1
 
