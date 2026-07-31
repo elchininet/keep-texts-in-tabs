@@ -4,32 +4,32 @@
   "key": "core.restore_state",
   "data": [
     {
-      "state": {"entity_id":"conversation.home_assistant","state":"unknown","attributes":{"friendly_name":"Home Assistant","supported_features":1},"last_changed":"2026-07-30T16:22:56.913793+00:00","last_reported":"2026-07-30T16:22:56.913793+00:00","last_updated":"2026-07-30T16:22:56.913793+00:00","context":{"id":"01KYSXC2MHMKK241CWDJ33B7DK","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"conversation.home_assistant","state":"unknown","attributes":{"friendly_name":"Home Assistant","supported_features":1},"last_changed":"2026-07-31T21:18:18.272503+00:00","last_reported":"2026-07-31T21:18:18.272503+00:00","last_updated":"2026-07-31T21:18:18.272503+00:00","context":{"id":"01KYX0NKN0YCTDCWHK9YZH6V1T","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2026-07-30T16:22:58.330101+00:00"
+      "last_seen": "2026-07-31T21:18:19.615919+00:00"
     },
     {
-      "state": {"entity_id":"event.backup_copia_de_seguridad_automatica","state":"unknown","attributes":{"event_types":["completed","failed","in_progress"],"event_type":null,"friendly_name":"Backup Copia de seguridad automática"},"last_changed":"2026-07-30T16:22:56.975724+00:00","last_reported":"2026-07-30T16:22:56.975724+00:00","last_updated":"2026-07-30T16:22:56.975724+00:00","context":{"id":"01KYSXC2PFBEDZ4MFDK9M29JFT","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"event.backup_copia_de_seguridad_automatica","state":"unknown","attributes":{"event_types":["completed","failed","in_progress"],"event_type":null,"friendly_name":"Backup Copia de seguridad automática"},"last_changed":"2026-07-31T21:18:18.294334+00:00","last_reported":"2026-07-31T21:18:18.294334+00:00","last_updated":"2026-07-31T21:18:18.294334+00:00","context":{"id":"01KYX0NKNPNZHVSFAATJHWDTFP","parent_id":null,"user_id":null}},
       "extra_data": {
         "last_event_type": null,
         "last_event_attributes": null
       },
-      "last_seen": "2026-07-30T16:22:58.330101+00:00"
+      "last_seen": "2026-07-31T21:18:19.615919+00:00"
     },
     {
-      "state": {"entity_id":"person.test","state":"unknown","attributes":{"editable":true,"id":"test","device_trackers":[],"in_zones":[],"source":"person.test","user_id":"ec313e3c38fb4d60b44e0db03cdc1250","friendly_name":"Test"},"last_changed":"2026-07-30T16:22:57.269370+00:00","last_reported":"2026-07-30T16:22:57.269370+00:00","last_updated":"2026-07-30T16:22:57.269370+00:00","context":{"id":"01KYSXC2ZN62RDE8226XPAT3DT","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"timer.laundry","state":"idle","attributes":{"duration":"0:01:00","editable":false,"last_transition":null},"last_changed":"2026-07-31T21:18:18.556991+00:00","last_reported":"2026-07-31T21:18:18.556991+00:00","last_updated":"2026-07-31T21:18:18.556991+00:00","context":{"id":"01KYX0NKXW6BFFF9AZX2DX76X7","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2026-07-30T16:22:58.330101+00:00"
+      "last_seen": "2026-07-31T21:18:19.615919+00:00"
     },
     {
-      "state": {"entity_id":"timer.laundry","state":"idle","attributes":{"duration":"0:01:00","editable":false,"last_transition":null},"last_changed":"2026-07-30T16:22:57.269544+00:00","last_reported":"2026-07-30T16:22:57.269544+00:00","last_updated":"2026-07-30T16:22:57.269544+00:00","context":{"id":"01KYSXC2ZN82VAZE8NHMCFD8RF","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"person.test","state":"unknown","attributes":{"editable":true,"id":"test","device_trackers":[],"in_zones":[],"source":"person.test","user_id":"ec313e3c38fb4d60b44e0db03cdc1250","friendly_name":"Test"},"last_changed":"2026-07-31T21:18:18.557098+00:00","last_reported":"2026-07-31T21:18:18.557098+00:00","last_updated":"2026-07-31T21:18:18.557098+00:00","context":{"id":"01KYX0NKXXVB9Z8BK8BJN280MG","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2026-07-30T16:22:58.330101+00:00"
+      "last_seen": "2026-07-31T21:18:19.615919+00:00"
     },
     {
-      "state": {"entity_id":"tts.google_en_com","state":"unknown","attributes":{"friendly_name":"Google Translate en com"},"last_changed":"2026-07-30T16:22:57.271640+00:00","last_reported":"2026-07-30T16:22:57.271640+00:00","last_updated":"2026-07-30T16:22:57.271640+00:00","context":{"id":"01KYSXC2ZQ6HZTG8NWYBPJEQ0Q","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"tts.google_en_com","state":"unknown","attributes":{"friendly_name":"Google Translate en com"},"last_changed":"2026-07-31T21:18:18.558641+00:00","last_reported":"2026-07-31T21:18:18.558641+00:00","last_updated":"2026-07-31T21:18:18.558641+00:00","context":{"id":"01KYX0NKXYN9V78TK6269ZWPD1","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2026-07-30T16:22:58.330101+00:00"
+      "last_seen": "2026-07-31T21:18:19.615919+00:00"
     }
   ]
 }
