@@ -60,7 +60,7 @@ test('Adding a new view', async ({ page }) => {
 
     const buttonMenu = page.locator(EDIT_DASHBOARD_MENU);
     const editButton = page.locator('ha-icon-button.edit-icon.view:visible');
-    const clearIconButton = page.locator('ha-picker-field ha-combo-box-item > ha-icon-button.clear');
+    const clearIconButton = page.locator('ha-picker-field ha-icon-button.clear');
 
     await addView.click();
     await expect(dialogHeader).toBeVisible();
