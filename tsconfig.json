@@ -11,13 +11,17 @@
       "removeComments": true,
       "skipLibCheck": true,
       "types": ["node"],
-      "rootDir": "./src",
+      "rootDir": "./",
       "paths": {
         "@types": ["./src/types"],
         "@constants": ["./src/constants"],
         "@utilities": ["./src/utilities"]  
       }
     },
-    "include": ["src/**/*.ts", "package.json"],
+    "include": [
+      "src/**/*.ts",
+      "package.json",
+      "playwright.config.ts"
+    ],
     "exclude": ["node_modules"]
   }

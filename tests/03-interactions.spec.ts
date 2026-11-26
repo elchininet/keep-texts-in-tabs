@@ -37,9 +37,13 @@ test('Edit a storage mode dashboard', async ({ page }) => {
 
 test('Moving a view', async ({ page }) => {
 
-    await page.locator('ha-icon-button-arrow-next:visible').click();
+    const nextButton = page.locator('ha-icon-button.edit-icon.view.move-next:visible');
+    const prevButton = page.locator('ha-icon-button.edit-icon.view.move-prev:visible');
+    await nextButton.focus();
+    await nextButton.click();
     await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot('02-storage-mode-moving-view-right.png');
-    await page.locator('ha-icon-button-arrow-prev:visible').click();
+    await prevButton.focus();
+    await prevButton.click();
     await expect(page.locator(TABS_CONTENT_SELECTOR)).toHaveScreenshot('01-storage-mode-edit-view.png');
     await page.locator(EXIT_EDIT_MODE).click();
 
@@ -59,7 +63,7 @@ test('Adding a new view', async ({ page }) => {
     const headerTabs = page.locator(HEADER_SELECTOR);
 
     const buttonMenu = page.locator(EDIT_DASHBOARD_MENU);
-    const editButton = page.locator('ha-icon-button.edit-icon.view:visible');
+    const editButton = page.locator('ha-icon-button.edit-icon.view:visible:not(.move)');
     const clearIconButton = page.locator('ha-picker-field ha-icon-button.clear');
 
     await addView.click();
